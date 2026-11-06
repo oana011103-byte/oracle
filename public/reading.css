@@ -318,9 +318,10 @@ html[lang=en] .keep h3{font-family:OracleTitle,Georgia,serif;font-size:48px;line
  .question-content>.foot{margin-top:20px}
 }
 @media(max-height:500px) and (min-width:600px){
- .question-content{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);grid-template-areas:'writing prompt' 'writing action';column-gap:24px;row-gap:16px;align-content:center;width:100%;padding:8px 0}
+ .question-content{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);grid-template-areas:'writing prompt' 'writing hint' 'writing action';column-gap:24px;row-gap:8px;align-content:center;width:100%;padding:8px 0}
  .question-content #ask{grid-area:writing}
  .question-content .prompt{grid-area:prompt;margin:0;padding:4px 8px;text-align:left;min-height:0}
+ .question-content>.hint{grid-area:hint;margin:0;font-size:12px;line-height:1.45}
  .question-content>.foot{grid-area:action;margin:0}
  #q{height:160px;min-height:160px}
  .reading-choice{padding:8px 0 12px;row-gap:8px}
