@@ -11,6 +11,8 @@
 
 接手者可克隆上述仓库，或解压交付的完整源码 ZIP。安装 Node.js 22+，进入有 `package.json` 的目录，执行 `npm run dev`，访问 http://localhost:4173 。默认离线预览不需要安装 AI SDK 或提供密钥；需要测试 AI 时再执行 `npm ci` 并按下方说明配置。运行 `npm test` 验证基础逻辑，`npm run build:pages` 生成可静态部署的 `dist/`。
 
+随后修复手机内置浏览器首页图案露出白底的问题：`.welcome-sigil` 不再依赖 `mix-blend-mode:multiply`，而是通过内嵌 SVG 的 `celestial-ink` 滤镜将原图亮度直接转成墨迹透明度。仍引用同一张原始图片，保留原裁切、尺寸、半透明灰度和前后光环；白色区域实际透明，避免 WebKit 合成层产生白色矩形底。
+
 交接的是现有视觉与交互实现、素材和离线演示。接回真实 AI、合入客户仓库、配置正式服务端和客户部署账户由后续开发者完成；当前 GitHub Pages 是静态演示，不是客户原 Vercel 项目的正式服务端。请不要把 API 密钥写入 `public/`、源码 ZIP 或 Git 提交。
 
 ### 建议验收顺序
