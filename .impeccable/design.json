@@ -1,0 +1,396 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-05T04:50:32.031052+00:00",
+  "title": "Design System: Oracle",
+  "extensions": {
+    "colorMeta": {
+      "night": {
+        "role": "neutral",
+        "displayName": "Grey-Pink Ground",
+        "tonalRamp": [
+          "oklch(15% 0.012 340.0)",
+          "oklch(26% 0.025 340.0)",
+          "oklch(38% 0.040 340.0)",
+          "oklch(50% 0.050 340.0)",
+          "oklch(62% 0.050 340.0)",
+          "oklch(74% 0.040 340.0)",
+          "oklch(86% 0.025 340.0)",
+          "oklch(95% 0.010 340.0)"
+        ]
+      },
+      "page": {
+        "role": "neutral",
+        "displayName": "Silver-Rose Paper",
+        "tonalRamp": [
+          "oklch(15% 0.012 351.4)",
+          "oklch(26% 0.025 351.4)",
+          "oklch(38% 0.040 351.4)",
+          "oklch(50% 0.050 351.4)",
+          "oklch(62% 0.050 351.4)",
+          "oklch(74% 0.040 351.4)",
+          "oklch(86% 0.025 351.4)",
+          "oklch(95% 0.010 351.4)"
+        ]
+      },
+      "page-ink": {
+        "role": "neutral",
+        "displayName": "Page Plum Ink",
+        "tonalRamp": [
+          "oklch(15% 0.012 336.0)",
+          "oklch(26% 0.025 336.0)",
+          "oklch(38% 0.040 336.0)",
+          "oklch(50% 0.050 336.0)",
+          "oklch(62% 0.050 336.0)",
+          "oklch(74% 0.040 336.0)",
+          "oklch(86% 0.025 336.0)",
+          "oklch(95% 0.010 336.0)"
+        ]
+      },
+      "page-muted": {
+        "role": "neutral",
+        "displayName": "Page Muted Rose",
+        "tonalRamp": [
+          "oklch(15% 0.012 330.0)",
+          "oklch(26% 0.025 330.0)",
+          "oklch(38% 0.040 330.0)",
+          "oklch(50% 0.050 330.0)",
+          "oklch(62% 0.050 330.0)",
+          "oklch(74% 0.040 330.0)",
+          "oklch(86% 0.025 330.0)",
+          "oklch(95% 0.010 330.0)"
+        ]
+      },
+      "card": {
+        "role": "neutral",
+        "displayName": "Vellum",
+        "tonalRamp": [
+          "oklch(15% 0.012 12.0)",
+          "oklch(26% 0.025 12.0)",
+          "oklch(38% 0.040 12.0)",
+          "oklch(50% 0.050 12.0)",
+          "oklch(62% 0.050 12.0)",
+          "oklch(74% 0.040 12.0)",
+          "oklch(86% 0.025 12.0)",
+          "oklch(95% 0.010 12.0)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Plum Ink",
+        "tonalRamp": [
+          "oklch(15% 0.012 336.0)",
+          "oklch(26% 0.025 336.0)",
+          "oklch(38% 0.040 336.0)",
+          "oklch(50% 0.050 336.0)",
+          "oklch(62% 0.050 336.0)",
+          "oklch(74% 0.040 336.0)",
+          "oklch(86% 0.025 336.0)",
+          "oklch(95% 0.010 336.0)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted Rose",
+        "tonalRamp": [
+          "oklch(15% 0.012 331.4)",
+          "oklch(26% 0.025 331.4)",
+          "oklch(38% 0.040 331.4)",
+          "oklch(50% 0.050 331.4)",
+          "oklch(62% 0.050 331.4)",
+          "oklch(74% 0.040 331.4)",
+          "oklch(86% 0.025 331.4)",
+          "oklch(95% 0.010 331.4)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Rose Seam",
+        "tonalRamp": [
+          "oklch(15% 0.012 334.3)",
+          "oklch(26% 0.025 334.3)",
+          "oklch(38% 0.040 334.3)",
+          "oklch(50% 0.050 334.3)",
+          "oklch(62% 0.050 334.3)",
+          "oklch(74% 0.040 334.3)",
+          "oklch(86% 0.025 334.3)",
+          "oklch(95% 0.010 334.3)"
+        ]
+      },
+      "soft": {
+        "role": "neutral",
+        "displayName": "Soft Rose",
+        "tonalRamp": [
+          "oklch(15% 0.012 332.7)",
+          "oklch(26% 0.025 332.7)",
+          "oklch(38% 0.040 332.7)",
+          "oklch(50% 0.050 332.7)",
+          "oklch(62% 0.050 332.7)",
+          "oklch(74% 0.040 332.7)",
+          "oklch(86% 0.025 332.7)",
+          "oklch(95% 0.010 332.7)"
+        ]
+      },
+      "gold": {
+        "role": "primary",
+        "displayName": "Dusty Ritual Rose",
+        "tonalRamp": [
+          "oklch(15% 0.012 332.6)",
+          "oklch(26% 0.025 332.6)",
+          "oklch(38% 0.040 332.6)",
+          "oklch(50% 0.050 332.6)",
+          "oklch(62% 0.050 332.6)",
+          "oklch(74% 0.040 332.6)",
+          "oklch(86% 0.025 332.6)",
+          "oklch(95% 0.010 332.6)"
+        ]
+      },
+      "gold-deep": {
+        "role": "primary",
+        "displayName": "Deep Rose Ink",
+        "tonalRamp": [
+          "oklch(15% 0.012 334.3)",
+          "oklch(26% 0.025 334.3)",
+          "oklch(38% 0.040 334.3)",
+          "oklch(50% 0.050 334.3)",
+          "oklch(62% 0.050 334.3)",
+          "oklch(74% 0.040 334.3)",
+          "oklch(86% 0.025 334.3)",
+          "oklch(95% 0.010 334.3)"
+        ]
+      },
+      "button": {
+        "role": "primary",
+        "displayName": "Dusty Rose Invitation",
+        "tonalRamp": [
+          "oklch(15% 0.012 333.3)",
+          "oklch(26% 0.025 333.3)",
+          "oklch(38% 0.040 333.3)",
+          "oklch(50% 0.050 333.3)",
+          "oklch(62% 0.050 333.3)",
+          "oklch(74% 0.040 333.3)",
+          "oklch(86% 0.025 333.3)",
+          "oklch(95% 0.010 333.3)"
+        ]
+      },
+      "button-hover": {
+        "role": "primary",
+        "displayName": "Deepened Invitation",
+        "tonalRamp": [
+          "oklch(15% 0.012 329.1)",
+          "oklch(26% 0.025 329.1)",
+          "oklch(38% 0.040 329.1)",
+          "oklch(50% 0.050 329.1)",
+          "oklch(62% 0.050 329.1)",
+          "oklch(74% 0.040 329.1)",
+          "oklch(86% 0.025 329.1)",
+          "oklch(95% 0.010 329.1)"
+        ]
+      },
+      "button-text": {
+        "role": "neutral",
+        "displayName": "Petal White",
+        "tonalRamp": [
+          "oklch(15% 0.012 337.5)",
+          "oklch(26% 0.025 337.5)",
+          "oklch(38% 0.040 337.5)",
+          "oklch(50% 0.050 337.5)",
+          "oklch(62% 0.050 337.5)",
+          "oklch(74% 0.040 337.5)",
+          "oklch(86% 0.025 337.5)",
+          "oklch(95% 0.010 337.5)"
+        ]
+      },
+      "field-border": {
+        "role": "neutral",
+        "displayName": "Question Seam",
+        "tonalRamp": [
+          "oklch(15% 0.012 326.4)",
+          "oklch(26% 0.025 326.4)",
+          "oklch(38% 0.040 326.4)",
+          "oklch(50% 0.050 326.4)",
+          "oklch(62% 0.050 326.4)",
+          "oklch(74% 0.040 326.4)",
+          "oklch(86% 0.025 326.4)",
+          "oklch(95% 0.010 326.4)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "English Display",
+        "purpose": "Self-hosted Latin-subset Great Vibes (OracleScript), weight400; connected script “Find your Answer” in both language modes."
+      },
+      "reading-title": {
+        "displayName": "Keepsake Title",
+        "purpose": "Intimate reading title, italic only in English."
+      },
+      "body": {
+        "displayName": "Bilingual Interface",
+        "purpose": "Readable app copy and controls."
+      },
+      "reading-body": {
+        "displayName": "Reading Prose",
+        "purpose": "Left-aligned reading text with generous leading."
+      }
+    },
+    "shadows": [
+      {
+        "name": "invitation",
+        "value": "0 8px 20px -12px #947361",
+        "purpose": "Restrained action lift."
+      },
+      {
+        "name": "altar-card",
+        "value": "8px 22px 28px -12px #795c4c55",
+        "purpose": "Front card separation."
+      },
+      {
+        "name": "lace-paper",
+        "value": "drop-shadow(0 12px 16px #795c4c1f)",
+        "purpose": "Filter shadow that follows the lace silhouette."
+      },
+      {
+        "name": "fan-card",
+        "value": "0 8px 16px -8px #795c4c88",
+        "purpose": "Selectable card depth."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(.16,1,.3,1)",
+        "purpose": "Shared state and ritual easing."
+      },
+      {
+        "name": "halo-breathe",
+        "value": "9s ease-in-out infinite",
+        "purpose": "Slow breathing circle; disabled for reduced motion."
+      },
+      {
+        "name": "veil-sway",
+        "value": "14s ease-in-out infinite alternate",
+        "purpose": "Floral veil drift; disabled for reduced motion."
+      },
+      {
+        "name": "card-breathe",
+        "value": "8s ease-in-out infinite",
+        "purpose": "Floating altar card; disabled for reduced motion."
+      },
+      {
+        "name": "screen-reveal",
+        "value": ".8s cubic-bezier(.16,1,.3,1) both",
+        "purpose": "Softened app screen entrance."
+      },
+      {
+        "name": "card-flip",
+        "value": "1s cubic-bezier(.16,1,.3,1) both",
+        "purpose": "Graceful revealed card turnover."
+      },
+      {
+        "name": "welcome-twinkle",
+        "value": "4.6s–6.9s ease-in-out infinite, independent negative delays",
+        "purpose": "Sparse pearl stars cycle opacity .08–.85 and scale .65–1.12; reduced motion disables animation."
+      },
+      {
+        "name": "elongated-four-point-star",
+        "value": "24×60 SVG shape;4–14px width",
+        "purpose": "Unequal long four-point pearl stars keep the independent welcome twinkle timing."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact-sheet",
+        "value": "900px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary invitation",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The principal action, used to enter or continue the ritual.",
+      "html": "<button class=\"ds-primary\">Ask the oracle</button>",
+      "css": ".ds-primary{font-family:var(--sans,'Avenir Next','PingFang SC','Microsoft YaHei',sans-serif);display:block;width:100%;border:0;border-radius:18px;padding:16px 24px;font-size:15px;font-weight:500;line-height:1.5;letter-spacing:.08em;cursor:pointer;transition:background .25s,transform .4s cubic-bezier(.16,1,.3,1);background:#fffdf6;color:#624d46;box-shadow:0 8px 20px -12px #947361}.ds-primary:hover{background:#f5eee2;transform:translateY(-2px)}.ds-primary:focus-visible{outline:2px solid #94665c;outline-offset:5px;}.ds-primary:active{transform:scale(.98)}.ds-primary:disabled{opacity:.5;transform:none;cursor:default}@media(prefers-reduced-motion:reduce){.ds-primary{transition:none}}"
+    },
+    {
+      "name": "Ghost action",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary actions beside the main invitation.",
+      "html": "<button class=\"ds-ghost\">Ask again</button>",
+      "css": ".ds-ghost{font-family:var(--sans,'Avenir Next','PingFang SC','Microsoft YaHei',sans-serif);display:block;width:100%;border:0;border-radius:18px;padding:16px 24px;font-size:15px;font-weight:500;line-height:1.5;letter-spacing:.08em;cursor:pointer;transition:background .25s,transform .4s cubic-bezier(.16,1,.3,1);border:1px solid #ae8f9f;background:#fffdf6;color:#624d46}.ds-ghost:hover{background:#f7eee4;transform:translateY(-2px)}.ds-ghost:focus-visible{outline:2px solid #94665c;outline-offset:5px;}.ds-ghost:active{transform:scale(.98)}.ds-ghost:disabled{opacity:.5;transform:none;cursor:default}@media(prefers-reduced-motion:reduce){.ds-ghost{transition:none}}"
+    },
+    {
+      "name": "Question field",
+      "kind": "input",
+      "refersTo": "question-field",
+      "description": "A personal question written on translucent paper.",
+      "html": "<label class=\"ds-field-label\" for=\"ds-question\">Your question</label><textarea class=\"ds-question\" id=\"ds-question\" placeholder=\"What is on your mind?\"></textarea>",
+      "css": ".ds-field-label{font-family:var(--sans,'Avenir Next','PingFang SC','Microsoft YaHei',sans-serif);display:block;color:var(--muted,#806961);font-size:12px;margin-bottom:8px}.ds-question{font-family:var(--serif,OracleSerif,'Songti SC',STSong,Georgia,serif);display:block;box-sizing:border-box;width:100%;min-height:160px;padding:20px;border:1px solid #ddc6ba;border-radius:3px;background:#f8f3f34d;color:var(--ink,#554641);font-size:25px;font-weight:400;line-height:1.35;resize:none;caret-color:#94665c;transition:border-color .2s}.ds-question::placeholder{color:#8f756a;font-style:italic}.ds-question:focus,.ds-question:focus-visible{border-color:#946b5c;outline:2px solid #d6b9a944;outline-offset:3px}.ds-question:disabled{opacity:.6}@media(prefers-reduced-motion:reduce){.ds-question{transition:none}}"
+    },
+    {
+      "name": "Masthead navigation",
+      "kind": "nav",
+      "refersTo": "language-control",
+      "description": "Home wordmark with music and language actions; 44px utility targets.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Oracle\"><button class=\"ds-home\">Oracle</button><div class=\"ds-tools\"><button class=\"ds-music\" aria-label=\"Background music\" aria-pressed=\"true\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M9 18.5a2.5 2.5 0 1 1-2-2.45V5l11-2v12.5a2.5 2.5 0 1 1-2-2.45V7.1l-7 1.3z\"/></svg></button><button class=\"ds-lang\" aria-label=\"Switch language\">中文</button></div></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-bottom:20px;border-bottom:1px solid #d4bcb16b;color:var(--ink,#554641)}.ds-home{font-family:var(--serif,OracleSerif,'Songti SC',STSong,Georgia,serif);font-size:48px;line-height:1;font-style:italic;letter-spacing:-.035em;background:none;border:0;padding:0;color:inherit;cursor:pointer}.ds-tools{display:flex;gap:9px}.ds-music,.ds-lang{font-family:var(--sans,'Avenir Next','PingFang SC','Microsoft YaHei',sans-serif);min-width:44px;min-height:44px;border:1px solid #d8bfb2;background:#f7f1f040;color:inherit;cursor:pointer}.ds-music{width:44px;height:44px;border-radius:50%;display:grid;place-items:center}.ds-music svg{width:17px;height:17px;fill:#906c5e}.ds-music[aria-pressed=true]{background:#ecdbce}.ds-lang{border-radius:99px;padding:5px 14px;font-size:12px}.ds-home:hover,.ds-music:hover,.ds-lang:hover{opacity:.85}.ds-home:focus-visible,.ds-music:focus-visible,.ds-lang:focus-visible{outline:2px solid #94665c;outline-offset:5px;}.ds-home:active,.ds-music:active,.ds-lang:active{opacity:.7}@media(max-width:900px){.ds-nav{gap:14px;padding-bottom:14px}.ds-home{font-size:40px}.ds-tools{gap:6px}}"
+    },
+    {
+      "name": "Tarot face",
+      "kind": "card",
+      "refersTo": "tarot-face",
+      "description": "A revealed tarot card, with a serif sign and bilingual name.",
+      "html": "<div class=\"ds-tarot\"><div class=\"ds-face\"><b>XVII</b><span>The Star</span><span class=\"ds-zh\" lang=\"zh\">星星</span></div></div>",
+      "css": ".ds-tarot{width:130px;color:var(--ink,#554641)}.ds-face{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;width:100%;aspect-ratio:2/3.2;border:1px solid #ddc5b8;border-radius:8px;background:#faf6f5;padding:6px}.ds-face b{font-family:var(--serif,OracleSerif,'Songti SC',STSong,Georgia,serif);font-size:24px;font-weight:400;line-height:1;color:#94665c}.ds-face span{font-family:var(--serif,OracleSerif,'Songti SC',STSong,Georgia,serif);font-size:13px;line-height:1.15;text-align:center}.ds-face .ds-zh{font:400 11px var(--zh,'Songti SC',STSong,serif);color:var(--muted,#806961)}.ds-tarot.ds-reversed .ds-face{transform:rotate(180deg);background:var(--soft,#f5e6e0)}"
+    },
+    {
+      "name": "Welcome Entry",
+      "kind": "custom",
+      "description": "Compact centred two-line title, celestial engraving and ivory entry. Viewport-centred brand with right-aligned utilities; quiet large corner motifs.",
+      "html": "<section class=\"ds-welcome\"><h1>FIND YOUR<br>ANSWER</h1><button>进入神谕</button></section>",
+      "css": ".ds-welcome{background:#f4eeeb;color:#5f5c58;display:flex;flex-direction:column;align-items:center;gap:24px;padding:96px 24px 112px;text-align:center}.ds-welcome h1{font-family:OracleTitle,Georgia,serif;font-weight:300;font-size:62px;line-height:1.03;letter-spacing:-.02em;margin:0}.ds-welcome button{background:#fffdf8;color:#605b54;border:0;border-radius:16px;padding:12px 24px;margin:0;min-width:136px;min-height:44px;font-size:12px;cursor:pointer}.ds-welcome button:hover{background:#f8f5ef}.ds-welcome button:focus-visible{outline:2px solid #94665c;outline-offset:5px}@media(max-width:900px){.ds-welcome{gap:20px}.ds-welcome h1{font-size:42px}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "银粉祈愿笺 · Silver-Rose Vellum",
+    "overview": "Warm pale pink paper, ivory rounded actions, floral lace and polka dots. Decorative small copy is removed while task instructions and readings remain clear.",
+    "keyCharacteristics": [
+      "Silver-rose paper with dark plum text.",
+      "Floral tulle, lace and fine polka dots as material.",
+      "Quiet orbital geometry and slow breathing motion.",
+      "Serif ritual typography paired with clear bilingual controls."
+    ],
+    "rules": [
+      {
+        "name": "The Pale Material Rule",
+        "body": "Keep texture and celestial ornament behind dark, readable content; the material supplies atmosphere rather than text contrast.",
+        "section": "colors"
+      },
+      {
+        "name": "The Upright Chinese Rule",
+        "body": "Do not synthesize italic Chinese. Chinese mode explicitly removes italics from every element.",
+        "section": "typography"
+      },
+      {
+        "name": "The Quiet Ritual Rule",
+        "body": "Use slow decorative motion and graceful state changes; honor reduced motion by disabling animation and transitions.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep the grey-pink, lace, polka-dot and divinity commitments together.",
+      "Do use the final local font stacks and upright Songti for Chinese.",
+      "Do keep music and language controls at least 44px in both dimensions.",
+      "Do preserve the 900px layout transition and readable text above decoration.",
+      "Do reuse the existing floral veil, dotted tulle and lace assets for material detail."
+    ],
+    "donts": [
+      "Don't restore the superseded midnight-blue and yellow-gold palette.",
+      "Don't turn fine paper edges into generic rounded dashboard cards.",
+      "Don't use pale decorative rose as the only readable foreground.",
+      "Don't add fast ambient motion or ignore reduced-motion preferences."
+    ]
+  }
+}

@@ -1,0 +1,565 @@
+/* The reading journey shares the welcome page's paper, with open layouts. */
+body:not([data-screen=home]){
+ --ink:#5e5955;--muted:#625b55;--page-ink:#5e5955;--page-muted:#625b55;
+ --gold:#a3948d;--gold-deep:#81716a;--line:#d9cec7;--night:#eeebe7;
+ background:#eeebe7;color:var(--ink);
+}
+body:not([data-screen=home])::before{
+ content:'';position:fixed;inset:0;width:auto;height:auto;z-index:0;pointer-events:none;
+ background-image:url('/textures/paper-fibre.svg'),url('/textures/rose-paper-clean.webp');
+ background-position:0 0,center;background-size:140px 140px,cover;background-repeat:repeat,no-repeat;
+ background-blend-mode:multiply,normal;opacity:.8;filter:saturate(.68) contrast(1.1);mask:none;
+}
+body:not([data-screen=home])::after{display:none}
+/* The paper's corners deepen during a ritual, leaving its centre clear. */
+.ritual-vignette{
+ position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0;
+ background:
+  radial-gradient(ellipse at top left,#51494045,transparent 64%) top left/65% 65% no-repeat,
+  radial-gradient(ellipse at top right,#51494045,transparent 64%) top right/65% 65% no-repeat,
+  radial-gradient(ellipse at bottom left,#51494045,transparent 64%) bottom left/65% 65% no-repeat,
+  radial-gradient(ellipse at bottom right,#51494045,transparent 64%) bottom right/65% 65% no-repeat;
+ transition:opacity 1s ease;
+}
+body[data-screen=cast] .ritual-vignette{opacity:1}
+body[data-screen=cast]{overflow-x:clip}
+.candlelight{
+ position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0;
+ background:radial-gradient(ellipse min(70vw,700px) min(65vh,520px) at var(--candle-x,50%) var(--candle-y,60%),#ffdfa175,#ffe8ba40 42%,#fff2d619 65%,transparent 84%);
+ transition:opacity 1.2s ease;
+}
+body[data-screen=cast]:has(.candle.lit) .candlelight{opacity:1}
+#instr.candle-invite{animation:candle-invitation 3.6s ease-in-out infinite}
+@keyframes candle-invitation{0%,100%{opacity:.6}50%{opacity:1}}
+@media(prefers-reduced-motion:reduce){.ritual-vignette,.candlelight{transition:none}#instr.candle-invite{animation:none;opacity:1}}
+body:not([data-screen=home]) .sky{opacity:.18}
+body:not([data-screen=home]) .sky::before{display:none}
+body:not([data-screen=home]) .sky .layer{animation:none}
+body:not([data-screen=home]) .sky .layer:nth-child(-n+2) i{animation:none}
+body[data-screen=home] .sky *{animation-play-state:paused!important}
+body:not([data-screen=home]) main{max-width:1140px}
+body:not([data-screen=home]) .masthead{position:relative;height:44px;padding:0;border:0;margin-bottom:24px}
+body:not([data-screen=home]) .wordmark{position:absolute;left:50%;transform:translateX(-50%);font-size:32px}
+body:not([data-screen=home]) .tools{margin-left:auto}
+.header-back{display:flex;align-items:center;min-height:44px;z-index:1}
+.header-back .back{display:none;min-width:44px;min-height:44px}
+body[data-screen=how] .header-back [data-screen-link=how],
+body[data-screen=ask] .header-back [data-screen-link=ask],
+body[data-screen=cast] .header-back [data-screen-link=cast],
+body[data-screen=result] .header-back [data-screen-link=result]{display:inline-flex;align-items:center}
+.screen:not(#s-home){animation:none;filter:none;transform:none}
+.screen:not(.on) *{animation-play-state:paused!important}
+.motion-paused *{animation-play-state:paused!important}
+.screen:not(#s-start):not(#s-home){max-width:640px;margin:0 auto;padding:0 16px 24px}
+.screen .top{margin-bottom:16px}
+.back{font-size:13px;letter-spacing:.04em;color:var(--muted);padding:8px 12px 8px 0}
+.screen h2{font-size:36px;line-height:1.4;margin:20px 0 32px;color:var(--ink)}
+html[lang=en] .screen h2{font-family:OracleScript,cursive;font-size:58px;line-height:1.25}
+.btn{box-shadow:none;background:#fffdf6;color:#625e58;font-size:14px;letter-spacing:.06em}
+.btn:hover{background:#fffefb;transform:none;box-shadow:0 6px 16px -12px #82746c55}
+.btn:active{transform:scale(.98)}
+.btn.ghost{background:transparent;box-shadow:none;border:0;color:var(--muted)}
+.btn.ghost:hover{background:#fffdf640;color:var(--ink)}
+body[data-back=dots],.bk-dots{--back-bg:url('/textures/tarot-dot-back.svg') center/cover no-repeat,#b8aaa5}
+@media(min-width:901px) and (orientation:landscape) and (any-pointer:fine){
+ #t-start,html[lang^=zh] #t-start{gap:.24em}
+ #t-start span{padding-inline:.1em;margin-inline:0}
+}
+
+/* A single daily sign, without a decorative stack or concentric frames. */
+.rear-card,.veil-panel{display:none}
+.altar .doily{opacity:.23}
+.altar .halo{width:76%;max-width:360px;height:auto;aspect-ratio:1.5;border:1px solid #fffdf5aa;box-shadow:none;rotate:-28deg;animation:none}
+.halo::before,.halo::after,.daycard.faceup::before,.altar .daycard::after{display:none}
+.altar .daycard{border:0;border-radius:8px;box-shadow:0 14px 28px -20px #71645b66;rotate:-5deg;animation:sign-float 9s ease-in-out infinite}
+.altar .daycard.faceup{background:#fffdf3b3;color:#86786e}
+.altar .coin{filter:saturate(.12)}
+.orbit-star{color:#fffdf5}
+.today{border:0;padding-left:0;min-height:0}
+.today .lbl{color:var(--muted);font-size:11px}
+.today .nm{font-size:26px;line-height:1.5;color:var(--ink)}
+#ritual-start{border:0;margin-top:8px;padding-top:16px}
+#s-start .foot .btn::after{display:none}
+#s-start .foot .btn{justify-content:center;text-align:center}
+.star svg{fill:#aa9c923f}.star.lit svg{fill:#8c7c73;filter:none}
+@keyframes sign-float{0%,100%{transform:translateY(-4px)}50%{transform:translateY(-12px)}}
+
+/* Methods are objects on the paper, rather than panels containing panels. */
+#s-how.on{justify-content:center;align-items:center}
+.reading-choice{display:grid;grid-template-rows:auto minmax(0,1fr) auto;justify-items:center;align-items:center;width:100%;min-height:0;flex:1;row-gap:24px;padding:clamp(24px,5svh,48px) 0 clamp(32px,6svh,64px)}
+#s-how h2{align-self:start;margin:0;max-width:100%}
+#s-how .doors{align-self:center;margin:0}
+#s-how .toggle{align-self:end;margin:0}
+.doors{gap:40px;width:100%;max-width:520px;margin:8px auto 24px}
+.door{background:transparent;border:0;box-shadow:none;filter:none;border-radius:0;padding:28px 12px;gap:12px;transform:none;transition:transform .18s var(--ease);color:var(--ink)}
+.door:hover{background:transparent;box-shadow:none;filter:none;transform:none}
+.door::before,.door::after{display:none}
+.door .art{height:90px;margin-bottom:8px;transition:none}
+.door .art .coin{font-size:10px;filter:saturate(.15)}
+.door .zh{display:none}
+.door b{font-family:var(--zh);font-weight:400;font-size:32px;line-height:1.4}
+html[lang=en] .door b{font-family:OracleScript,cursive;font-size:46px}
+.minis i{width:40px;height:64px;border:2px solid #fffdf4;margin:0 -5px}
+.door:hover .art,.door:focus-visible .art,.door:active .art{transform:none}
+@media(hover:hover) and (pointer:fine){
+ #s-how .door:hover,#s-how .door:focus-visible{transform:translateY(-6px)}
+ #s-how .door:active{transform:translateY(-2px)}
+}
+.toggle{font-size:14px;margin-top:8px;gap:10px;min-height:44px;color:var(--muted)}
+.track{width:40px;height:24px;background:#b7aaa14d}
+.track i{width:18px;height:18px;background:#fffdf6}
+.toggle input:checked+.track{background:#9f8d83}
+.toggle input:checked+.track i{transform:translateX(16px)}
+
+/* A centred writing group, with ruled paper inside the editable surface. */
+.question-content{display:flex;flex:1;flex-direction:column;justify-content:center;width:min(100%,520px);margin-inline:auto;padding:24px 0 48px;min-height:0}
+#q{--rule-height:36px;--writing-inset:24px;background-color:#fffdf44d;background-image:repeating-linear-gradient(to bottom,transparent 0 calc(var(--rule-height) - 1px),#a6958740 calc(var(--rule-height) - 1px) var(--rule-height));background-size:calc(100% - var(--writing-inset)*2) calc(100% - var(--writing-inset)*2);background-position:center;background-repeat:no-repeat;background-attachment:local;border:0;border-radius:16px;height:204px;min-height:204px;padding:var(--writing-inset);font-size:21px;line-height:var(--rule-height);transition:background-color .2s}
+#q:focus{background-color:#fffdf49e;border:0;outline:none;box-shadow:none}
+#q::placeholder{color:#746a63;opacity:1;font-size:15px;line-height:var(--rule-height);font-style:italic;font-family:var(--sans)}
+.prompt{background:transparent;border:0;border-radius:0;box-shadow:none;padding:12px 4px;margin-top:24px;min-height:72px;line-height:1.7;color:var(--ink)}
+.prompt span{color:var(--muted);font-size:11px;letter-spacing:.08em;margin-bottom:8px}
+.prompt:hover b,.prompt:focus-visible b{text-decoration:underline;text-underline-offset:5px;text-decoration-color:#a9988b80}
+.question-content .prompt{text-align:center}
+.question-content>.foot{width:100%;margin-top:28px;padding-top:0;flex:none}
+
+/* Cards remain tangible reading objects; their surrounding stage stays open. */
+.stage{perspective:1000px}
+.face{border:0;border-radius:8px;background:#fffdf5c9;box-shadow:0 8px 18px -15px #78685a55;padding:8px}
+.face b{color:#8a7b70}.face span{font-size:14px;line-height:1.3}.face .zh{font-size:11px;color:var(--muted)}
+.tc.empty .face{border:0;background:#fffdf43b;box-shadow:none}
+.tc.selected .face{border:2px solid #fffdf4}
+.tc.rev .face{background:#eee6e0cc}
+.tc small{font-size:12px;letter-spacing:.06em;color:var(--muted)}
+.tc em{color:#625b55;font-size:12px}
+.fc{border:2px solid #fffdf4;transition:translate .25s var(--ease),opacity .25s;animation:deck-arrive .42s var(--ease) backwards;animation-delay:calc((var(--i) + 7)*12ms)}
+.fc.picked{animation:none}
+@keyframes deck-arrive{from{opacity:0;transform:translateY(16px) scale(.96)}to{opacity:1;transform:none}}
+.toss{gap:22px;padding:64px 16px 28px;perspective:700px;touch-action:manipulation}
+.coin-flight{position:relative;display:grid;place-items:center;width:64px;height:64px;perspective:650px}
+.toss .coin{font-size:14px;z-index:1;background:radial-gradient(ellipse at 32% 24%,#eddfbb 0,#cbb98e 43%,#ab9776 76%,#d8c7a1 100%);box-shadow:inset 0 0 0 2px #c2ad83,inset 0 0 0 5px #ecdcba80,0 3px 0 #8d795a,0 8px 12px -9px #695844b3}
+.toss .coin::before{background:#e9e1d8;box-shadow:0 0 0 .16em #8a7753aa,inset 1px 2px 2px #79674e66}
+.toss .coin::after{color:#796345;border-color:#8d7856}
+.coin-shadow{position:absolute;bottom:-9px;width:56px;height:9px;border-radius:50%;background:radial-gradient(ellipse,#84735c47,transparent 70%);transform:scaleX(.9);pointer-events:none}
+.toss{position:relative}
+.gathering .coin-shadow{opacity:0;transition:opacity .45s}
+.coin-seal{position:absolute;left:50%;bottom:32px;width:110px;height:72px;transform:translateX(-50%) scale(.8);opacity:0;pointer-events:none}
+.coin-seal::before{content:'';position:absolute;inset:0;border:1px solid #fffdf3;border-radius:50%;transform:rotate(-26deg)}
+.coin-seal svg{position:absolute;width:17px;height:28px;left:47px;top:-19px;fill:#fffdf3}
+.sealed .coin-seal{animation:coin-seal .6s ease-out both}
+@keyframes coin-seal{0%{opacity:0;transform:translateX(-50%) scale(.8)}45%{opacity:1}100%{opacity:.75;transform:translateX(-50%) scale(1.12)}}
+.cast-complete>.hex{animation:hex-awaken .8s ease-out both}
+@keyframes hex-awaken{from{opacity:.65}to{opacity:1}}
+.coin.spin{animation:reading-toss 1.04s both;animation-delay:var(--delay)}
+.throwing .coin-shadow{animation:coin-ground 1.04s both;animation-delay:var(--delay)}
+@keyframes reading-toss{
+ 0%{transform:translate3d(0,0,0) rotateX(0) rotateZ(0);animation-timing-function:cubic-bezier(.2,.7,.35,1)}
+ 38%{transform:translate3d(var(--drift),-76px,18px) rotateX(550deg) rotateZ(var(--lean));animation-timing-function:cubic-bezier(.55,0,.8,.4)}
+ 76%{transform:translate3d(0,0,0) rotateX(1080deg) rotateZ(0);animation-timing-function:ease-out}
+ 87%{transform:translate3d(0,-9px,0) rotateX(1100deg) rotateZ(var(--lean));animation-timing-function:ease-in}
+ 100%{transform:translate3d(0,0,0) rotateX(1080deg) rotateZ(0)}
+}
+@keyframes coin-ground{0%,100%{opacity:1;transform:scaleX(.9)}38%{opacity:.25;transform:scaleX(.48)}76%{opacity:1;transform:scaleX(1.08)}87%{opacity:.65;transform:scaleX(.8)}}
+/* The deck gives way to one candle, keeping the selected cards in view. */
+.ritual-space{width:100%;max-width:420px;height:228px;display:grid;place-items:center;flex:none}
+.ritual-space .fan{width:100%;max-width:100%;margin:0}
+html[lang=en] .stage .tc small{display:flex;align-items:flex-end;justify-content:center;min-height:2.6em;font-size:10px;line-height:1.3;letter-spacing:.02em;overflow-wrap:normal;word-break:normal}
+.deck-away{opacity:0;transition:opacity .24s ease;pointer-events:none}
+.candle{position:relative;width:152px;height:228px;padding:0;background:none;border:0;border-radius:12px;cursor:pointer;touch-action:manipulation;isolation:isolate;animation:candle-arrive .4s ease-out both}
+.candle img{position:relative;display:block;width:100%;height:100%;object-fit:contain;pointer-events:none;filter:brightness(.82);transition:filter .9s ease}
+.candle.lit img{filter:brightness(1.12) saturate(.95)}
+.candle:focus-visible{outline:1px solid #82726b;outline-offset:6px}
+.candle:disabled{cursor:default}
+.candle-aura{position:absolute;left:50%;top:7%;width:min(380px,90vw);aspect-ratio:1;transform:translate(-50%,-50%);z-index:-1;opacity:0;pointer-events:none;background:radial-gradient(circle,#fff2c6d9,#ffe8ae70 22%,#ffedc624 48%,transparent 72%);transition:opacity 1s ease}
+.candle-flame{position:absolute;left:50.2%;bottom:93%;width:14px;height:38px;opacity:0;transform-origin:50% 100%;pointer-events:none;transition:opacity .4s ease}
+.candle-flame::before,.candle-flame i{content:'';position:absolute;inset:0;border-radius:65% 35% 55% 45%/70% 70% 30% 30%;background:linear-gradient(to top,#cb935d,#ffe7a6 30%,#fffdf0 72%);box-shadow:0 0 18px 7px #ffe3a5bd;transform:translateX(-50%)}
+.candle-flame i{inset:43% 2px 1px;background:#fffdf1;box-shadow:none}
+.lit .candle-flame{opacity:1;animation:candle-flicker 2.7s ease-in-out infinite .4s}
+.lit .candle-aura{opacity:1}
+@keyframes candle-arrive{from{opacity:0}to{opacity:1}}
+@keyframes candle-flicker{0%,100%{transform:rotate(-2deg) scaleY(.96)}35%{transform:rotate(3deg) scaleY(1.06)}72%{transform:rotate(-3deg) scaleY(.92)}}
+@media(max-width:599px){.ritual-space{height:210px}.candle{width:140px;height:210px}.candle-flame{height:35px}}
+@media(max-height:700px){
+ body[data-screen=cast] .masthead{margin-bottom:12px}
+ body[data-screen=cast] .screen:not(#s-start):not(#s-home){padding-bottom:12px}
+ #s-cast h2{margin-top:4px;margin-bottom:12px}
+ #s-cast .instr{padding-top:8px}
+ .ritual-space{height:148px}.candle{width:99px;height:148px}.candle-flame{height:30px}
+ .toss{padding-top:50px;gap:16px}
+}
+@media(max-height:500px) and (min-width:600px){
+ body[data-screen=cast] main{padding-top:12px;padding-bottom:10px}
+ body[data-screen=cast] .masthead{margin-bottom:4px}
+ body[data-screen=cast] .screen:not(#s-start):not(#s-home){padding-bottom:8px}
+ #s-cast h2{margin-bottom:8px}
+ html[lang=en] #s-cast h2{font-size:36px}
+ #s-cast .stage .ritual-space{max-width:270px;flex:1}#s-cast .ritual-space .fan{max-width:100%}
+}
+@media(prefers-reduced-motion:reduce){.throwing .coin-shadow,.lit .candle-flame,.candle{animation:none}.deck-away,.candle-flame,.candle-aura{transition-duration:.1s}}
+.dial{--dial-height:clamp(280px,44svh,375px);--dial-width:calc(var(--dial-height)*.8);--branch-radius:calc(var(--dial-width)*.2733);--hour-length:calc(var(--dial-width)*.16);--second-length:calc(var(--dial-width)*.22);width:var(--dial-width);height:var(--dial-height);background:transparent;box-shadow:none;margin-top:48px;isolation:isolate}
+.dial-underlay{position:absolute;inset:0;z-index:-1;width:100%;height:100%;object-fit:contain;pointer-events:none;opacity:.65;filter:grayscale(.85) contrast(.85) brightness(1.12)}
+.dial .ring b{transform:translate(-50%,-50%) rotate(var(--a)) translateY(calc(-1 * var(--branch-radius))) rotate(calc(-1 * var(--a)))}
+.dial .hand.h{height:var(--hour-length)}.dial .hand.s{height:var(--second-length)}
+.dial .ring,.dial .hand,.dial::after{transition:opacity .35s ease}
+.dial.revealing .ring,.dial.revealing .hand,.dial.revealing::after{opacity:0}
+.dial #d-hex{--w:92px;--lh:8px;--gap:8px;position:absolute;left:50%;top:50%;translate:-50% -50%;pointer-events:none}
+.dial .clock{top:auto;bottom:calc(100% + 14px);background:transparent;color:var(--ink);padding:0;line-height:1.2;white-space:nowrap}
+@media(max-height:700px) and (max-width:599px){
+ .dial{--dial-width:180px;--dial-height:225px;--branch-radius:54px;--hour-length:32px;--second-length:42px;margin-top:44px}
+ .dial .clock{font-size:26px;bottom:calc(100% + 12px)}
+ .dial .ring b{font-size:12px}.dial .ring b.now{font-size:15px}
+ .dial #d-hex{--w:60px;--lh:5px;--gap:6px}
+}
+@media(max-height:500px) and (min-width:600px){
+ .dial{--dial-width:180px;--dial-height:225px;--branch-radius:54px;--hour-length:32px;--second-length:42px;margin-top:40px}
+ .dial .clock{font-size:24px;bottom:calc(100% + 10px)}
+ .dial .ring b{font-size:12px}.dial .ring b.now{font-size:15px}
+ .dial #d-hex{--w:60px;--lh:5px;--gap:6px}
+ #s-cast.on:has(#stage[data-ritual=yesno]){display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:'title stage' 'question stage' 'instruction stage';gap:8px 20px;align-content:center;align-items:center}
+ #s-cast:has(#stage[data-ritual=yesno]) h2{grid-area:title;margin:0}
+ #s-cast:has(#stage[data-ritual=yesno]) #cast-q{grid-area:question;margin:0}
+ #s-cast:has(#stage[data-ritual=yesno]) #instr{grid-area:instruction;padding-top:4px}
+ #s-cast #stage[data-ritual=yesno]{grid-area:stage;gap:12px;padding:0}
+}
+.dial.caught{animation:moment-caught .65s var(--ease)}
+@keyframes moment-caught{0%{box-shadow:0 0 0 0 #fffdf488}100%{box-shadow:0 0 0 20px #fffdf400}}
+.instr{font-size:14px;line-height:1.7;padding-top:16px}
+.instr b{font-size:22px;color:var(--ink);margin-bottom:4px}
+#stage[data-ritual=guidance]+.instr{width:100%;height:104px;min-height:104px;flex-shrink:0}
+#stage[data-ritual=guidance]+.instr b{font-size:20px;line-height:1.4}
+@media(max-height:700px){
+ #stage[data-ritual=guidance]+.instr{height:96px;min-height:96px}
+ #stage[data-ritual=guidance] .hex{--lh:11px;--gap:11px}
+ #stage[data-ritual=guidance] .toss{padding:42px 10px 18px}
+ #stage[data-ritual=guidance] .coin-flight{width:56px;height:56px}
+ #stage[data-ritual=guidance] .toss .coin{font-size:12px}
+}
+@media(max-height:500px) and (min-width:600px){
+ #s-cast #stage[data-ritual=guidance]{padding-top:4px}
+ #stage[data-ritual=guidance]+.instr{height:88px;min-height:88px;font-size:13px;line-height:1.55}
+ #stage[data-ritual=guidance]+.instr b{font-size:18px;line-height:1.4}
+}
+.stage .hex{color:#938073}.stage .hex .moving{color:#655c55}
+.ln.slot i{background:#9a897e26}
+.echo{color:var(--muted);line-height:1.5}
+.err{color:#775749;max-width:38ch;font-size:16px;line-height:1.8}
+
+/* The answer is an open letter, with no outer card or inset step box. */
+.keep{background:transparent;filter:none;border:0;box-shadow:none;padding:20px 0 8px;margin:0;gap:20px}
+.keep::before,.keep::after,.keep>.lc,.keep>.bow{display:none}
+.keep .date{font-size:11px;letter-spacing:.12em}
+.keep .yourq{font-size:21px;line-height:1.6;max-width:42ch}
+.keep .sign{padding:16px 0 8px}
+.keep .sign .slots{max-width:520px;margin:auto;gap:16px}
+.keep .sign .face{aspect-ratio:2/2.8}
+.keep .signname{font-size:16px;letter-spacing:.06em}
+.keep h3{font-family:var(--zh);font-size:36px;line-height:1.4;font-style:normal;max-width:24ch;margin:8px 0 0;color:var(--ink)}
+html[lang=en] .keep h3{font-family:OracleTitle,Georgia,serif;font-size:48px;line-height:1.15}
+.keep .body{width:100%;max-width:54ch;font-size:16px;line-height:1.95;text-align:center;white-space:pre-line}
+/* Supplied imagery sits on the paper and between paragraphs, without new panels. */
+#s-result{position:relative}
+.result-materials{position:absolute;top:0;bottom:0;left:calc((100% - 100vw)/2);right:calc((100% - 100vw)/2);z-index:-1;overflow:hidden;pointer-events:none;mix-blend-mode:multiply}
+.result-materials img{position:absolute;display:block;height:auto;filter:grayscale(1);mix-blend-mode:multiply;mask-image:radial-gradient(ellipse at center,#000 22%,#0008 56%,transparent 74%)}
+.material-oval{width:340px;left:clamp(-150px,calc(50% - 650px),80px);top:18%;opacity:.24;transform:rotate(-14deg)}
+.material-ascii{width:360px;right:clamp(-140px,calc(50% - 660px),90px);top:0;opacity:.26;transform:rotate(8deg)}
+.material-lily{width:440px;right:clamp(-140px,calc(50% - 670px),80px);bottom:8%;opacity:.2;transform:rotate(-9deg)}
+.material-filters{position:absolute;pointer-events:none}
+.answer-ribbon{width:132px;height:96px;flex:none;margin:0 0 -8px;background:url('/materials/ornament-sheet.webp') 94% 95%/241.51% auto no-repeat;filter:url('#paper-ink');opacity:.75;transform:rotate(-5deg)}
+.answer-ribbon[hidden]{display:none}
+@media(max-width:900px){.material-oval{width:250px;left:-155px;top:20%}.material-ascii{width:280px;right:-140px;opacity:.22}.material-lily{width:340px;right:-170px;bottom:12%;opacity:.18}.answer-ribbon{width:112px;height:82px}}
+.keep .step{width:100%;max-width:54ch;background:transparent;border:0;border-radius:0;padding:0;margin-top:8px;font-size:16px;line-height:1.9;text-align:center}
+.step span{justify-content:center;font-size:12px;letter-spacing:.08em;color:var(--muted);margin-bottom:8px}
+.step span::before{display:none}
+.how{max-width:54ch;margin-top:8px}
+.how summary{list-style:none;text-decoration:underline;text-underline-offset:5px;text-decoration-color:#ad9a8a66}
+.how summary::-webkit-details-marker{display:none}
+.how summary::marker{content:''}
+.how p{line-height:1.8;padding:8px 0}
+.actions{margin:28px auto 0;width:100%;max-width:480px;gap:16px}
+#ritual-result{margin-top:24px}
+.a2hs{background:transparent;border:0;border-radius:0;padding:12px 0}
+
+@media(max-width:900px){
+ body:not([data-screen=home]) .wordmark{font-size:28px}
+ .screen:not(#s-start):not(#s-home){padding:0 0 24px;max-width:600px}
+ .screen h2{font-size:32px;margin:16px 0 24px}
+ html[lang=en] .screen h2{font-size:50px}
+ .doors{gap:24px;margin-bottom:20px}
+ .door{padding:24px 8px}.door .art{height:80px}
+ .door .art .coin{font-size:9px}
+ .door b{font-size:30px}html[lang=en] .door b{font-size:42px}
+ #q{--rule-height:34px;--writing-inset:20px;font-size:19px}
+ #q::placeholder{font-size:14px}
+ .keep h3{font-size:30px}html[lang=en] .keep h3{font-size:40px}
+ .keep .sign .slots{gap:16px 20px;max-width:360px}
+ .keep .sign .face{max-height:170px}
+ .keep .face span{font-size:15px}.keep .face .zh{font-size:11px}
+}
+@media(max-height:700px){
+ .screen .top{margin-bottom:8px}
+ .screen h2{margin-top:8px;margin-bottom:20px;font-size:30px}
+ html[lang=en] .screen h2{font-size:44px}
+ #s-how h2{margin-top:0}
+ .doors{margin-bottom:12px}.door{padding:20px 8px}
+ #q{--rule-height:32px;--writing-inset:18px;height:164px;min-height:164px}
+ .prompt{margin-top:16px;min-height:64px}
+ .question-content{padding:12px 0 24px}
+ .question-content>.foot{margin-top:24px}
+}
+@media(max-width:359px){
+ .doors{gap:16px}.door .art .coin{font-size:8px}
+ .door .minis i{width:34px;height:54px}
+ .keep h3{font-size:28px}
+ .keep .sign .slots{gap:12px}
+}
+@media(max-width:599px) and (max-height:700px){
+ .question-content{padding:8px 0 16px}
+ #q{height:144px;min-height:144px}
+ .question-content .prompt{padding:8px 4px;margin-top:12px}
+ .question-content>.foot{margin-top:20px}
+}
+@media(max-height:500px) and (min-width:600px){
+ .question-content{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);grid-template-areas:'writing prompt' 'writing action';column-gap:24px;row-gap:16px;align-content:center;width:100%;padding:8px 0}
+ .question-content #ask{grid-area:writing}
+ .question-content .prompt{grid-area:prompt;margin:0;padding:4px 8px;text-align:left;min-height:0}
+ .question-content>.foot{grid-area:action;margin:0}
+ #q{height:160px;min-height:160px}
+ .reading-choice{padding:8px 0 12px;row-gap:8px}
+ #s-how h2{margin-bottom:0}
+ #s-how .doors{margin-bottom:0}
+ #s-how .door{padding:6px 8px;gap:8px}
+ #s-how .door .art{height:48px;margin-bottom:0}
+ #s-how .door .art .coin{font-size:7px}
+ #s-how .minis i{width:28px;height:44px}
+ #s-how .door b{font-size:28px;line-height:1.2}
+ html[lang=en] #s-how .door b{font-size:34px}
+ #s-how .toggle{font-size:13px}
+}
+@media(hover:none){.door:hover .art{transform:none}}
+@media(prefers-reduced-motion:reduce){
+ .sealed .coin-seal,.cast-complete>.hex{animation:none}
+ .fc,.coin.spin,.dial.caught,.altar .daycard{animation:none!important}
+ .door .art{transition:none}.door:hover .art,.door:focus-visible .art{transform:none}
+ #s-how .door:hover,#s-how .door:focus-visible,#s-how .door:active{transform:none}
+}
+
+/* Original illustrated deck, shared by the reveal, result and daily sign. */
+.face{position:relative;overflow:hidden}
+.stage .face{aspect-ratio:2/3}
+.tarot-art{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;opacity:0;transition:opacity .2s ease;pointer-events:none}
+.has-art>.tarot-art{opacity:1}
+.has-art>b,.has-art>span{opacity:0}
+.face.has-art,.altar .daycard.has-art{background:transparent;box-shadow:none}
+.keep .sign .face{width:100%;max-width:144px;max-height:none;aspect-ratio:2/3}
+
+/* Paper ovals for interface actions; ritual objects keep their actual silhouettes. */
+:root{
+ --button-paper-images:url('/textures/paper-fibre.svg'),linear-gradient(#fffdf5a6,#fffdf5a6),url('/textures/rose-paper-clean.webp');
+}
+button.btn,button.btn.ghost,button.back,.tools button.music,.tools button.lang,.a2hs button.x,
+button.btn:hover,button.btn.ghost:hover,button.back:hover,.tools button.music:hover,.tools button.lang:hover,
+.tools button.music[aria-pressed=true]{
+ border:0;border-radius:50%;background-color:#fffdf3;
+ background-image:var(--button-paper-images);background-size:96px 96px,100% 100%,cover;
+ background-position:0 0,center,center;background-repeat:repeat,no-repeat,no-repeat;
+ background-blend-mode:multiply,normal,luminosity;box-shadow:none;color:var(--ink);opacity:.8;
+}
+button.btn,button.btn.ghost{width:min(100%,220px);min-height:44px;padding:12px 26px;margin-inline:auto}
+button.btn:disabled{opacity:.4}
+.actions button.btn{width:min(100%,190px);padding-inline:20px}
+#s-result .actions button.btn,#s-result .actions button.btn:hover{background:transparent;border:0;border-radius:0;box-shadow:none}
+#s-result .actions button.btn::after{content:'';display:block;width:68px;height:8px;margin:8px auto 0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='68' height='8' viewBox='0 0 68 8'%3E%3Cpath d='M1 4Q5 0 9 4T17 4T25 4T33 4T41 4T49 4T57 4T65 4' fill='none' stroke='%2381716a' stroke-width='.9' stroke-linecap='round'/%3E%3C/svg%3E") center/contain no-repeat;opacity:.7;pointer-events:none}
+#s-result .actions button.btn{transition:color .3s ease,opacity .3s ease}
+#s-result .actions button.btn::after{transition:opacity .3s ease}
+#s-result .how summary{transition:color .3s ease,text-decoration-color .3s ease}
+#s-result .actions button.btn:focus-visible{color:#4b433e;opacity:1}
+#s-result .actions button.btn:focus-visible::after{opacity:1}
+#s-result .how summary:focus-visible{color:#4b433e;text-decoration-color:#81716a}
+@media(hover:hover) and (pointer:fine){
+ #s-result .actions button.btn:hover{color:#4b433e;opacity:1}
+ #s-result .actions button.btn:hover::after{opacity:1}
+ #s-result .how summary:hover{color:#4b433e;text-decoration-color:#81716a}
+}
+button.btn:hover,button.btn.ghost:hover,button.back:hover,.tools button.music:hover,.tools button.lang:hover{background-color:#fffef9}
+button.back{padding:8px 10px}
+.tools{gap:6px}
+.tools button.music,.tools button.lang{width:48px;min-width:48px;height:44px;min-height:44px}
+.tools button.music[aria-pressed=true]{background-color:#ede4d6}
+button.prompt,button.prompt:hover{background:transparent;border:0;border-radius:0;box-shadow:none}
+button.prompt{width:min(100%,360px);padding:10px 24px;margin-inline:auto;align-self:center;opacity:.8}
+button.door,button.door:hover{background:transparent;border:0;border-radius:0;box-shadow:none}
+button.door{width:88%;justify-self:center;padding:20px 8px;gap:8px;opacity:.8}
+.door .art{height:76px;margin-bottom:4px}
+.door b{font-size:30px}
+html[lang=en] .door b{font-size:42px}
+.a2hs button.x{width:48px;height:44px}
+@media(max-width:900px){button.prompt{width:min(100%,300px)}button.door{padding:16px 8px}.door .art{height:68px}.door b{font-size:28px}html[lang=en] .door b{font-size:32px}}
+@media(max-width:359px){html[lang=en] .door b{font-size:30px}}
+@media(max-width:599px) and (max-height:700px){.question-content button.prompt{padding:8px 26px}}
+@media(max-height:500px) and (min-width:600px){.question-content button.prompt{padding:8px 24px}}
+
+/* Mouse starlight is a small, noninteractive layer above every page. */
+.cursor-starlight{position:fixed;inset:0;overflow:clip;pointer-events:none;z-index:50;contain:strict}
+.cursor-spark{position:absolute;display:block;width:calc(var(--spark-size)*.45);height:var(--spark-size);pointer-events:none;animation:cursor-glimmer var(--spark-life) ease-out both}
+.cursor-spark svg{display:block;width:100%;height:100%;fill:#fffdf4;stroke:#b2a29288;stroke-width:.45;filter:drop-shadow(0 0 3px #fff9e9cc)}
+@keyframes cursor-glimmer{
+ 0%{opacity:0;transform:translate(-50%,-50%) rotate(var(--spark-angle)) scale(.5)}
+ 15%{opacity:.95;transform:translate(-50%,-50%) rotate(var(--spark-angle)) scale(1)}
+ 100%{opacity:0;transform:translate(calc(-50% + var(--spark-dx)),calc(-50% + var(--spark-dy))) rotate(var(--spark-angle)) scale(.12)}
+}
+@media(prefers-reduced-motion:reduce),(any-hover:none){.cursor-starlight{display:none}}
+
+/* Tarot keeps its positions and labels still while only physical cards turn. */
+#stage[data-ritual=tarot]+.instr{width:100%;height:88px;min-height:88px;flex-shrink:0}
+#stage[data-ritual=tarot] .tc{perspective:900px;padding:0}
+#stage[data-ritual=tarot] .tc small:empty{display:none}
+#stage[data-ritual=tarot] .tc em{display:block;height:18px;min-height:18px;flex:none;line-height:18px;white-space:nowrap;opacity:0;transition:opacity .24s ease}
+#stage[data-ritual=tarot] .tc.revealed em{opacity:1}
+.tarot-turner{position:relative;width:100%;aspect-ratio:2/3;transform-style:preserve-3d}
+#stage[data-ritual=tarot] .tarot-turner>.face{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+#stage[data-ritual=tarot] .tc.rev .face{transform:none}
+#stage[data-ritual=tarot] .tarot-back{transform:rotateY(0deg);border:2px solid #fffdf4;background:var(--back-bg)}
+#stage[data-ritual=tarot] .tc.empty .tarot-back{border-color:transparent;background:#fffdf43b}
+#stage[data-ritual=tarot] .tarot-front{transform:rotateY(180deg);border:0;background:#fffdf5c9}
+#stage[data-ritual=tarot] .tc.rev .tarot-front{transform:rotateY(180deg) rotateZ(180deg)}
+#stage[data-ritual=tarot] .tarot-front.has-art{background:transparent}
+#stage[data-ritual=tarot] .tc.revealed .tarot-turner{transform:rotateY(180deg)}
+.tarot-flight{position:fixed;left:0;top:0;z-index:30;pointer-events:none;transform-origin:center;border:2px solid #fffdf4;border-radius:7px;box-shadow:0 10px 20px -14px #78685a77}
+#stage[data-ritual=tarot] .ritual-space{height:200px}
+#stage[data-ritual=tarot] .ritual-space>*{grid-area:1/1}
+#stage[data-ritual=tarot] .candle{width:133.33px;height:200px;animation-duration:.6s}
+#stage[data-ritual=tarot] .deck-away{transition-duration:.36s}
+#stage[data-ritual=tarot] .fc.picked{opacity:0;translate:0 0;transition:opacity .12s}
+@media(max-width:599px) and (min-height:701px){#stage[data-ritual=tarot] .ritual-space{height:210px}#stage[data-ritual=tarot] .candle{width:140px;height:210px}}
+@media(max-height:700px){
+ #stage[data-ritual=tarot]+.instr{height:72px;min-height:72px;font-size:13px;line-height:1.55}
+ #stage[data-ritual=tarot] .slots{max-width:260px;gap:8px}
+ #stage[data-ritual=tarot]{gap:8px}
+ #stage[data-ritual=tarot] .ritual-space{height:120px}
+ #stage[data-ritual=tarot] .candle{width:80px;height:120px}
+ #stage[data-ritual=tarot] .candle-flame{width:11px;height:27px}
+ #stage[data-ritual=tarot] .tc em{font-size:10px}
+}
+@media(max-height:500px) and (min-width:600px){
+ #s-cast #stage[data-ritual=tarot]{padding-top:4px}
+ #stage[data-ritual=tarot]+.instr{height:64px;min-height:64px}
+ #s-cast #stage[data-ritual=tarot] .slots{max-width:260px;flex:0 1 260px}
+}
+@media(prefers-reduced-motion:reduce){#stage[data-ritual=tarot] .fc,#stage[data-ritual=tarot] .tc em{transition:none}}
+
+/* An open letter with clear roles, retaining centred reading. */
+.keep .body{white-space:normal}
+.reading-section+.reading-section{margin-top:34px}
+.reading-position{font-size:12px;letter-spacing:.12em;color:#81746b;margin-bottom:8px}
+.reading-card{font:400 25px/1.45 var(--zh);color:#5e5955;margin:0 0 14px;text-align:center}
+html[lang=en] .reading-card{font-family:OracleTitle,Georgia,serif;font-size:30px}
+.reading-card span{display:block;font:400 12px/1.5 var(--sans);letter-spacing:.04em;color:#81746b;margin-top:4px}
+.reading-prose{font-size:16px;line-height:1.95;white-space:pre-line}
+.keep .step{max-width:34ch;margin-top:16px}
+.keep .step>span{font-size:14px;color:#6a5e56;margin-bottom:14px}
+.keep .step>p{font-family:var(--zh);font-size:20px;line-height:1.8;color:#5e5550;text-wrap:pretty}
+html[lang=en] .keep .step>p{font-family:OracleTitle,Georgia,serif;font-size:25px}
+.card-zoom{cursor:zoom-in;font-family:inherit;touch-action:manipulation}
+.card-zoom:disabled{cursor:default}
+#daycard{pointer-events:auto}
+.altar>[aria-hidden=true]{pointer-events:none}
+.altar #daycard:hover,.altar #daycard:focus-visible{animation-play-state:paused}
+html.viewing-card{overflow:hidden}
+html.viewing-card body{padding-right:var(--viewer-scroll-gap,0px)}
+#card-viewer{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:24px;border:0;background:transparent;color:#fffdf4;overflow:auto;overscroll-behavior:contain}
+#card-viewer[open]{display:grid;place-items:center}
+#card-viewer::backdrop{background:#5b515bcc;transition:background-color .18s ease}
+#card-viewer.closing::backdrop{background:#5b515b00}
+.card-viewer-content{width:min(100%,640px);text-align:center;transition:opacity .18s ease;animation:card-preview-in .28s ease-out both}
+#card-viewer-art{display:block;width:100%;height:calc(100svh - 160px);object-fit:contain;touch-action:pinch-zoom}
+#card-viewer-art.reversed{transform:rotate(180deg)}
+#card-viewer-title{font:400 16px/1.6 var(--sans);margin-top:16px;text-wrap:balance}
+.card-viewer-close{position:absolute;top:max(16px,env(safe-area-inset-top));right:max(20px,env(safe-area-inset-right));min-height:44px;min-width:52px;padding:8px 12px;border:0;background:none;color:#fffdf4;font:400 14px var(--sans);cursor:pointer}
+.card-viewer-close:focus-visible{outline:1px solid #fffdf4;outline-offset:2px}
+#card-viewer.closing .card-viewer-content{opacity:0;animation:none}
+@keyframes card-preview-in{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media(max-width:599px){.reading-card{font-size:23px}.reading-section+.reading-section{margin-top:30px}}
+@media(prefers-reduced-motion:reduce){.card-viewer-content{animation:none;transition:none}#card-viewer::backdrop{transition:none}}
+
+/* Keep the page frame still while content and scroll positions change. */
+html{overflow-y:scroll;overflow-anchor:none}
+body{--header-edge:max(48px,var(--safe-left),var(--safe-right));--header-top:calc(28px + var(--safe-top))}
+body[data-screen=home] .masthead{
+ top:var(--header-top);left:0;right:0;width:calc(100% - var(--header-edge)*2);
+ max-width:1044px;margin:0 auto;
+}
+body[data-screen=home] .wordmark{line-height:1}
+@media(max-width:900px){
+ body{--header-edge:max(24px,calc(var(--safe-left) + 12px),calc(var(--safe-right) + 12px));--header-top:calc(20px + var(--safe-top))}
+ body[data-screen=home] .wordmark{font-size:28px}
+}
+@media(max-width:359px){body{--header-edge:max(18px,calc(var(--safe-left) + 10px),calc(var(--safe-right) + 10px))}}
+@media(max-height:500px) and (min-width:600px){
+ body{--header-top:calc(12px + var(--safe-top))}
+ body:not([data-screen=home]) main{padding-top:var(--header-top)}
+}
+
+/* Navigation belongs to the viewport, independently of page fades and scrolling. */
+body[data-screen] .masthead{
+ position:fixed;top:var(--header-top);left:0;right:0;z-index:40;
+ width:calc(100% - var(--header-edge)*2);max-width:1044px;height:44px;
+ margin:0 auto;padding:0;border:0;
+}
+body[data-screen] .wordmark{position:absolute;left:50%;transform:translateX(-50%);font-size:32px;line-height:1}
+body:not([data-screen=home]) main{padding-top:calc(var(--header-top) + 68px)}
+@media(max-width:900px){body[data-screen] .wordmark{font-size:28px}}
+@media(max-height:700px){body[data-screen=cast] main{padding-top:calc(var(--header-top) + 56px)}}
+@media(max-height:500px) and (min-width:600px){body[data-screen=cast] main{padding-top:calc(var(--header-top) + 48px)}}
+
+/* Today's sign reads down one centred axis. */
+#s-start.on{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;max-width:600px;width:100%;margin:0 auto;padding:24px 0;min-height:0}
+#s-start .start header{order:0;flex:none;width:100%;padding:0;margin:0;text-align:center}
+#s-start #t-start{max-width:none;margin:0 auto;text-align:center;justify-content:center}
+#s-start .altar{order:1;flex:none;align-self:center;width:min(100%,360px);height:clamp(220px,30svh,280px);margin:0;pointer-events:auto}
+#s-start .altar .daycard{width:140px;height:220px}
+#s-start .doily{width:260px;height:260px}
+#s-start .today{order:2;flex:none;align-self:center;width:100%;margin:0;padding:0;text-align:center;min-height:0}
+#s-start .today .ad{margin-inline:auto}
+#s-start>.foot{order:3;flex:none;align-self:center;width:220px;max-width:100%;margin:8px 0 0;padding:0}
+#s-start #ritual-start{order:4;flex:none;align-self:center;width:100%;padding:8px 0 0;margin:0;justify-content:center}
+#s-start .backs{order:5}
+@media(max-width:900px){#s-start.on{gap:12px;padding:12px 0}#s-start .altar .daycard{width:125px;height:196px}}
+@media(max-height:760px) and (min-width:901px){
+ #s-start.on{gap:12px;padding:12px 0}
+ #s-start #t-start{font-size:54px}
+ #s-start .altar{height:210px}#s-start .altar .daycard{width:120px;height:190px}
+ #s-start .doily{width:230px;height:230px}
+}
+@media(max-width:599px) and (max-height:740px){
+ #s-start.on{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:'headline headline' 'altar today' 'altar foot' 'ritual ritual';gap:8px 12px;align-content:center;justify-items:center;padding:12px 0}
+ #s-start .start header{margin:0 0 8px}
+ #s-start .altar{width:100%;height:188px}
+ #s-start .altar .daycard{width:76px;height:120px}
+ #s-start .doily{width:150px;height:150px}
+ #s-start .today{align-self:end;width:100%}
+ #s-start>.foot{align-self:start;width:100%;margin:4px 0 0}
+ #s-start #ritual-start{padding-top:8px}
+}
+@media(max-height:500px) and (min-width:600px){
+ #s-start.on{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:'headline altar' 'today altar' 'foot altar' 'ritual ritual';max-width:680px;gap:8px 24px;align-content:center;justify-items:center;padding:4px 0}
+ #s-start #t-start{font-size:42px}
+ #s-start .altar{width:100%;height:210px}
+ #s-start .altar .daycard{width:100px;height:158px}
+ #s-start .doily{width:200px;height:200px}
+ #s-start .today .nm{font-size:20px}
+ #s-start>.foot{margin:0}
+}
+
+/* Scroll content dissolves into matching paper before reaching the fixed masthead. */
+.navigation-veil{
+ position:fixed;inset:0;z-index:35;pointer-events:none;visibility:hidden;
+ background:#eeebe7;
+ -webkit-mask-image:linear-gradient(to bottom,#000 calc(var(--header-top) + 44px),transparent calc(var(--header-top) + 68px));
+ mask-image:linear-gradient(to bottom,#000 calc(var(--header-top) + 44px),transparent calc(var(--header-top) + 68px));
+}
+.navigation-veil::before{
+ content:'';position:absolute;inset:0;
+ background-image:url('/textures/paper-fibre.svg'),url('/textures/rose-paper-clean.webp');
+ background-position:0 0,center;background-size:140px 140px,cover;background-repeat:repeat,no-repeat;
+ background-blend-mode:multiply,normal;opacity:.8;filter:saturate(.68) contrast(1.1);
+}
+.page-scrolled body:not([data-screen=home]) .navigation-veil{visibility:visible}

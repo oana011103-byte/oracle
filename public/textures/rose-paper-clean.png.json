@@ -1,0 +1,6 @@
+{
+  "origin": "rose-paper-original.png",
+  "generator": "built-in image_gen",
+  "prompt": "Use case: precise-object-edit. Edit target: supplied muted blush-grey paper texture for a website background. Remove ONLY all text, creator signature, rednote watermark, ID numerals and small brand badges along the bottom edge (the lowest approximately 8 percent). Seamlessly reconstruct the same faint irregular paper texture and faded pink/grey clouding there. Preserve the source composition, hues, softness, vertical paper marks and all other texture. No added symbols, no text, no objects. This is a faithful background cleanup, not a redesign. Output the same portrait aspect ratio with an opaque background.",
+  "generated_file": "/Users/oana/.codex/generated_images/01a1a512-84e0-78a3-aee9-1c2034b91562/exec-8cba05f6-e5e3-41ef-8735-c40b11b2c00d.png"
+}

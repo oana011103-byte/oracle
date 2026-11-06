@@ -3,7 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node lib/oracle.test.js"
+    "test": "node lib/oracle.test.js && node lib/local-reading.test.js",
+    "dev": "node dev.mjs",
+    "build:pages": "node scripts/build-pages.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.3.0"

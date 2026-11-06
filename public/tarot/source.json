@@ -1,0 +1,563 @@
+{
+  "source": "https://oracle-divination.vercel.app/",
+  "retrieved": "2026-11-05",
+  "files": [
+    {
+      "name": "Ace of Cups",
+      "file": "ace-of-cups.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/ace-of-cups.webp",
+      "bytes": 39430,
+      "sha256": "f641c888db777780321eb50152619177eca5f2ee8a9957ab74c98c66502c0d8c"
+    },
+    {
+      "name": "Ace of Pentacles",
+      "file": "ace-of-pentacles.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/ace-of-pentacles.webp",
+      "bytes": 53548,
+      "sha256": "65a7858f28adedf7e8c516ec8a7eeeaed371c3fec007b4f3fae55e66fc211fc3"
+    },
+    {
+      "name": "Ace of Swords",
+      "file": "ace-of-swords.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/ace-of-swords.webp",
+      "bytes": 36606,
+      "sha256": "0a42c848e4ca958425d47f4de395f0154a1c73f07a62c861cd593e00d0e31911"
+    },
+    {
+      "name": "Ace of Wands",
+      "file": "ace-of-wands.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/ace-of-wands.webp",
+      "bytes": 40328,
+      "sha256": "94a80c9b9d4d5e94c342c11f563ad694b83ec90673c6fe66e2859843e1a86cea"
+    },
+    {
+      "name": "Death",
+      "file": "death.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/death.webp",
+      "bytes": 42276,
+      "sha256": "80d40296110d90496c7e06634b9fc003a78bc5b2a966daefad4e0c1b29dec2c3"
+    },
+    {
+      "name": "Eight of Cups",
+      "file": "eight-of-cups.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/eight-of-cups.webp",
+      "bytes": 41566,
+      "sha256": "c08431e0d0656ae27dc78ec7e5039b89b3232deed77f7502f99970b45fe8787a"
+    },
+    {
+      "name": "Eight of Pentacles",
+      "file": "eight-of-pentacles.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/eight-of-pentacles.webp",
+      "bytes": 57260,
+      "sha256": "f2563572044a68c1c748cc054ec92a1e74d147d7b2844dda53cb322278338ce9"
+    },
+    {
+      "name": "Eight of Swords",
+      "file": "eight-of-swords.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/eight-of-swords.webp",
+      "bytes": 39950,
+      "sha256": "ca2a8e69ec9657bd1479e34542e7601c03875208c27715c7547b90dfb2f7c52e"
+    },
+    {
+      "name": "Eight of Wands",
+      "file": "eight-of-wands.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/eight-of-wands.webp",
+      "bytes": 39958,
+      "sha256": "d2b025419d9556c20c4e168d681bf451db5c9335fc6cfc4022377bff87d952f5"
+    },
+    {
+      "name": "Five of Cups",
+      "file": "five-of-cups.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/five-of-cups.webp",
+      "bytes": 47890,
+      "sha256": "991f567210d2be984452cae7669dc1695d924413bc98b65d83a128a873ff01e6"
+    },
+    {
+      "name": "Five of Pentacles",
+      "file": "five-of-pentacles.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/five-of-pentacles.webp",
+      "bytes": 56220,
+      "sha256": "b796f5f50cb9c64542f26f05c9d90bc1ce88c27bc822e97e4cb59dcda5c56728"
+    },
+    {
+      "name": "Five of Swords",
+      "file": "five-of-swords.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/five-of-swords.webp",
+      "bytes": 38560,
+      "sha256": "bc8897b2c88f667141073be80ffb83eae5e646cbba4158c7bbf4d6eef5df4e7a"
+    },
+    {
+      "name": "Five of Wands",
+      "file": "five-of-wands.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/five-of-wands.webp",
+      "bytes": 36780,
+      "sha256": "07df39292f6091b8806823d57b4e8380eef00b8ff88380b0e0b6db9eae580195"
+    },
+    {
+      "name": "Four of Cups",
+      "file": "four-of-cups.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/four-of-cups.webp",
+      "bytes": 43608,
+      "sha256": "9b122a9945b437e9f61ac562091f6a2cbd527bf441a5e771c2de96ee95dc8503"
+    },
+    {
+      "name": "Four of Pentacles",
+      "file": "four-of-pentacles.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/four-of-pentacles.webp",
+      "bytes": 52450,
+      "sha256": "a342acad2abdeb7d76c8ce6872d7f35629dbf448a05ad3bbeae9da7c4dd8a72d"
+    },
+    {
+      "name": "Four of Swords",
+      "file": "four-of-swords.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/four-of-swords.webp",
+      "bytes": 36942,
+      "sha256": "f1a7985f7a573cee84d61aadc6d81c8f4003f38206e74dbacd82cbb054133b30"
+    },
+    {
+      "name": "Four of Wands",
+      "file": "four-of-wands.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/four-of-wands.webp",
+      "bytes": 39152,
+      "sha256": "109d754f74228f4ff55b1a25caf27b79e3864a436a60d09bce6838baec50f0f4"
+    },
+    {
+      "name": "Judgement",
+      "file": "judgement.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/judgement.webp",
+      "bytes": 38444,
+      "sha256": "456db6b5b62f33a76aaa167693dc06194725ef9530e2fc9916382581c89b620a"
+    },
+    {
+      "name": "Justice",
+      "file": "justice.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/justice.webp",
+      "bytes": 37882,
+      "sha256": "3beb015de8b3ba335663a56d4b58d498c2b9d9517c683a1ee052e6a2b3c5d8e2"
+    },
+    {
+      "name": "King of Cups",
+      "file": "king-of-cups.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/king-of-cups.webp",
+      "bytes": 40588,
+      "sha256": "40867d65232615f8d29741cf14f3ea78a76b274feaaaec245da6079f792ea89d"
+    },
+    {
+      "name": "King of Pentacles",
+      "file": "king-of-pentacles.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/king-of-pentacles.webp",
+      "bytes": 50480,
+      "sha256": "e6ee0e820cc3a7e59bcd24de87ca004b10dc33c3c26fd7ee135f2a5db543e631"
+    },
+    {
+      "name": "King of Swords",
+      "file": "king-of-swords.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/king-of-swords.webp",
+      "bytes": 41894,
+      "sha256": "6b52ef93c2a8fac42ca3686dfd60e98929d35fbd77419cb29b9868a4c8e74746"
+    },
+    {
+      "name": "King of Wands",
+      "file": "king-of-wands.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/king-of-wands.webp",
+      "bytes": 58074,
+      "sha256": "6fe49b0bb00d164c5c95c5b967ac665aae9970e56c5ff12e035f96b4e3052bb4"
+    },
+    {
+      "name": "Knight of Cups",
+      "file": "knight-of-cups.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/knight-of-cups.webp",
+      "bytes": 33142,
+      "sha256": "66fa81d2beafe704e4029c2f5390857a5b365ca932aa31d9f9fe8e9d3653a724"
+    },
+    {
+      "name": "Knight of Pentacles",
+      "file": "knight-of-pentacles.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/knight-of-pentacles.webp",
+      "bytes": 52070,
+      "sha256": "57fc01c2c06681cba17be07480ec4ce1b8b08ea2a32a8e82c3855eae15a3babe"
+    },
+    {
+      "name": "Knight of Swords",
+      "file": "knight-of-swords.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/knight-of-swords.webp",
+      "bytes": 41410,
+      "sha256": "b038a75bd993730b3432e4b065413ad636fcdcf9bbb3a8cc9bb90cef8b903629"
+    },
+    {
+      "name": "Knight of Wands",
+      "file": "knight-of-wands.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/knight-of-wands.webp",
+      "bytes": 41750,
+      "sha256": "25631623161b2aa1eafdb967deb0348c47f4fd2b299ea13ba1e8c61ca32be4fa"
+    },
+    {
+      "name": "Nine of Cups",
+      "file": "nine-of-cups.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/nine-of-cups.webp",
+      "bytes": 36668,
+      "sha256": "62b3ed7e263904a79757c6ee24e9bc408e3a5b5f1beec4c3742eb64db410eabc"
+    },
+    {
+      "name": "Nine of Pentacles",
+      "file": "nine-of-pentacles.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/nine-of-pentacles.webp",
+      "bytes": 55496,
+      "sha256": "c0d263ab8d3981b8653f5b58166a37ec91bd2e15b21ea1b975e554250a91453a"
+    },
+    {
+      "name": "Nine of Swords",
+      "file": "nine-of-swords.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/nine-of-swords.webp",
+      "bytes": 41662,
+      "sha256": "5c6e25da6ca2a2c1e9a3f26e8580f456c6cce4923b5af04d2243981936d1f53b"
+    },
+    {
+      "name": "Nine of Wands",
+      "file": "nine-of-wands.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/nine-of-wands.webp",
+      "bytes": 36578,
+      "sha256": "90e160aaa5f81a036048eaa81b08234749ff9691553195bf621fc5505f7f5766"
+    },
+    {
+      "name": "Page of Cups",
+      "file": "page-of-cups.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/page-of-cups.webp",
+      "bytes": 42580,
+      "sha256": "27d3ccaf70c69a22a550a66a00eef930e648140b55ce3f0925729155c854b8a3"
+    },
+    {
+      "name": "Page of Pentacles",
+      "file": "page-of-pentacles.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/page-of-pentacles.webp",
+      "bytes": 57384,
+      "sha256": "82d4b61058167a8815bc2e8624720735e8056a22c6ff0a9e78207b985b3169fa"
+    },
+    {
+      "name": "Page of Swords",
+      "file": "page-of-swords.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/page-of-swords.webp",
+      "bytes": 45556,
+      "sha256": "8f252f0195e0fe3d464af7ba0408b016853b914bb0a0e6e2fb43601a4c094225"
+    },
+    {
+      "name": "Page of Wands",
+      "file": "page-of-wands.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/page-of-wands.webp",
+      "bytes": 39316,
+      "sha256": "fb7132f5631063505914a41631b4c6596e2823fc44e0303f47d1499e99b2851b"
+    },
+    {
+      "name": "Queen of Cups",
+      "file": "queen-of-cups.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/queen-of-cups.webp",
+      "bytes": 43616,
+      "sha256": "d18eb30ef001a410b59c0e059053f5e5463d271cc38af93e1e50b4dbf6b528b5"
+    },
+    {
+      "name": "Queen of Pentacles",
+      "file": "queen-of-pentacles.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/queen-of-pentacles.webp",
+      "bytes": 50036,
+      "sha256": "f43dea2c4dc6c098938ba41bc4a4f6d5a1e9d7dd47bb5a1017ca5c8ed554c2bc"
+    },
+    {
+      "name": "Queen of Swords",
+      "file": "queen-of-swords.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/queen-of-swords.webp",
+      "bytes": 43586,
+      "sha256": "42d1e8a5f9fbe9a5ed05557f791f9851d22db38114e1681c9012c897297a9837"
+    },
+    {
+      "name": "Queen of Wands",
+      "file": "queen-of-wands.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/queen-of-wands.webp",
+      "bytes": 39056,
+      "sha256": "9eda37ab8175c1410a3a446e2bd9e1cd5a482101dff45c45921732d4f05d184a"
+    },
+    {
+      "name": "Seven of Cups",
+      "file": "seven-of-cups.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/seven-of-cups.webp",
+      "bytes": 42222,
+      "sha256": "91ac782dbc9106e57105c7057350cc2aa35b3a072464498402200689e4b084d9"
+    },
+    {
+      "name": "Seven of Pentacles",
+      "file": "seven-of-pentacles.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/seven-of-pentacles.webp",
+      "bytes": 59048,
+      "sha256": "36041f6ac4691de7cbcb618a1e47b995ed21895d4a3ee3dc56d4a933442be357"
+    },
+    {
+      "name": "Seven of Swords",
+      "file": "seven-of-swords.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/seven-of-swords.webp",
+      "bytes": 40646,
+      "sha256": "130815f7aaddcd8763789a46d914ced0919428988d9c8318281dcd578f6fc040"
+    },
+    {
+      "name": "Seven of Wands",
+      "file": "seven-of-wands.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/seven-of-wands.webp",
+      "bytes": 45214,
+      "sha256": "799e8a489fb202bcb17906f1e768d9a5cb787167b64ae1d33a23b30bda7b9b5f"
+    },
+    {
+      "name": "Six of Cups",
+      "file": "six-of-cups.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/six-of-cups.webp",
+      "bytes": 43434,
+      "sha256": "9c20d4d932c8561b57e3ea3d7c6cec548b25108f0ec1313a8e4a626d6240d3c9"
+    },
+    {
+      "name": "Six of Pentacles",
+      "file": "six-of-pentacles.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/six-of-pentacles.webp",
+      "bytes": 55728,
+      "sha256": "76000214641d62f6ac35bef59c9f5fb251280accf7cbfa3838f482cf14eafe64"
+    },
+    {
+      "name": "Six of Swords",
+      "file": "six-of-swords.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/six-of-swords.webp",
+      "bytes": 39602,
+      "sha256": "9866fe232ec7e2aa9aa0ca74d474dc875a776b839655fc474b2218afa8bd39ff"
+    },
+    {
+      "name": "Six of Wands",
+      "file": "six-of-wands.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/six-of-wands.webp",
+      "bytes": 39950,
+      "sha256": "6f958c4db87ad885bc71a7084f38567cddcee67f23dd374844915ebe2d10594b"
+    },
+    {
+      "name": "Strength",
+      "file": "strength.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/strength.webp",
+      "bytes": 38258,
+      "sha256": "362d0d5d3ceb5db36ef6da6ced1dffb9f3e944e6eddddeaa2d81889197c16ae8"
+    },
+    {
+      "name": "Temperance",
+      "file": "temperance.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/temperance.webp",
+      "bytes": 37708,
+      "sha256": "cf44d5ffefde816496e4d7f8911e07ae69a7cf3c1042435a2c10868a019e4c3b"
+    },
+    {
+      "name": "Ten of Cups",
+      "file": "ten-of-cups.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/ten-of-cups.webp",
+      "bytes": 45072,
+      "sha256": "f9140407d9840522aa8b3f3b74ed574f664d21a8a1500dd849c2a559d3575363"
+    },
+    {
+      "name": "Ten of Pentacles",
+      "file": "ten-of-pentacles.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/ten-of-pentacles.webp",
+      "bytes": 53334,
+      "sha256": "f85d5c3e501c20874bdad90cdee0e370c39d5bed7edb0f13449a3284db071c64"
+    },
+    {
+      "name": "Ten of Swords",
+      "file": "ten-of-swords.webp",
+      "source": "user-supplied attachment, 2026-11-06",
+      "bytes": 88356,
+      "sha256": "fa1150d9bddeb26a48645cecc0251410ab17763b02eec81a2eea905f2b3d9ee2",
+      "previous": {
+        "source": "https://oracle-divination.vercel.app/tarot/ten-of-swords.webp",
+        "bytes": 45974,
+        "sha256": "dd91a5cec022283dfe1e49f53092758de51a0bf2d2721d532df07bf82ea581b6"
+      },
+      "original": {
+        "filename": "codex-clipboard-9256a21d-9613-4625-bff5-6d9e4ed9a61d.jpg",
+        "sha256": "a419d4690f786699d8ac78bd8771522161cfff9849d07786931b8355ee0cf492",
+        "dimensions": [
+          1280,
+          1854
+        ]
+      },
+      "processing": "WebP quality92, width480, proportional resize without cropping or artwork edits"
+    },
+    {
+      "name": "Ten of Wands",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "name": "The Chariot",
+      "file": "the-chariot.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/the-chariot.webp",
+      "bytes": 38030,
+      "sha256": "8c149f4860ee9e89ef716be75d527e480c68074738470d6bc932928ccd10d9fc"
+    },
+    {
+      "name": "The Devil",
+      "file": "the-devil.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/the-devil.webp",
+      "bytes": 46310,
+      "sha256": "5ab5bbac26c9e72ae4faa25a2eaff26c2bc50362dc994184a26e0f0ea31ab88d"
+    },
+    {
+      "name": "The Emperor",
+      "file": "the-emperor.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/the-emperor.webp",
+      "bytes": 39392,
+      "sha256": "04486891595e19673f4b2536d6d6bc4fc878053dd13a190e084532628ebb2890"
+    },
+    {
+      "name": "The Empress",
+      "file": "the-empress.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/the-empress.webp",
+      "bytes": 40112,
+      "sha256": "f3b1f752ae29a6efe41ea7da80339957e52cc8d7bd88b8b4c095932b8f53a745"
+    },
+    {
+      "name": "The Fool",
+      "file": "the-fool.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/the-fool.webp",
+      "bytes": 36002,
+      "sha256": "62e67b63309601e389b4f064c95808eb3ed623a3d00e5cd83a5894d9ff03b0fa"
+    },
+    {
+      "name": "The Hanged Man",
+      "file": "the-hanged-man.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/the-hanged-man.webp",
+      "bytes": 42062,
+      "sha256": "0aee1a1f2cc2ca86505e276bc07efb2ebc8210cd09ff238f819e024bc90063ac"
+    },
+    {
+      "name": "The Hermit",
+      "file": "the-hermit.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/the-hermit.webp",
+      "bytes": 35664,
+      "sha256": "6a307627ad912b5ca30702e672103b23112d4e22de18d110ca9e3bdb604053c3"
+    },
+    {
+      "name": "The Hierophant",
+      "file": "the-hierophant.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/the-hierophant.webp",
+      "bytes": 36882,
+      "sha256": "1c8a5967f85403b833f3a6813fa5af8f438d01470ffe970f8f9097d76782ea9f"
+    },
+    {
+      "name": "The High Priestess",
+      "file": "the-high-priestess.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/the-high-priestess.webp",
+      "bytes": 38574,
+      "sha256": "fe17d28c509e55f97bef5e976143e7fe284ffa34a1b39424a17ed0c01e73e057"
+    },
+    {
+      "name": "The Lovers",
+      "file": "the-lovers.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/the-lovers.webp",
+      "bytes": 37982,
+      "sha256": "594283fa3ed064767ad10f3b7c6384b4c582223ef089b8a61f3e9b1584ed8cbf"
+    },
+    {
+      "name": "The Magician",
+      "file": "the-magician.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/the-magician.webp",
+      "bytes": 36760,
+      "sha256": "a1bb644434d8a456353741400913fc4152be1b797447bf05eac36df956d97766"
+    },
+    {
+      "name": "The Moon",
+      "file": "the-moon.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/the-moon.webp",
+      "bytes": 38662,
+      "sha256": "62095402974023c4f4171162646112e81c4e0df561438d447cd2eb2bb401e4a3"
+    },
+    {
+      "name": "The Star",
+      "file": "the-star.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/the-star.webp",
+      "bytes": 38064,
+      "sha256": "b1210e8a79d2a4c2885da15b6b51a5693a27b584845ef16fade203702eed8111"
+    },
+    {
+      "name": "The Sun",
+      "file": "the-sun.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/the-sun.webp",
+      "bytes": 35208,
+      "sha256": "f8c066d056a026a43503804e6f303ea1c85a886c67fb2badc581cf74e82613f3"
+    },
+    {
+      "name": "The Tower",
+      "file": "the-tower.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/the-tower.webp",
+      "bytes": 39760,
+      "sha256": "62f0ea9d073aa31ccedc29748c00a5aa161e4c084567495f93b25e5e8fc72896"
+    },
+    {
+      "name": "The World",
+      "file": "the-world.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/the-world.webp",
+      "bytes": 35834,
+      "sha256": "07e786c542738db3f695b36bdb90c66964d2d1b98bff364abf946a1cdacda835"
+    },
+    {
+      "name": "Three of Cups",
+      "file": "three-of-cups.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/three-of-cups.webp",
+      "bytes": 42504,
+      "sha256": "3a43fb8b962c864a9dc46c16f27313c44df7e65a21d235b05480e796854a186f"
+    },
+    {
+      "name": "Three of Pentacles",
+      "file": "three-of-pentacles.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/three-of-pentacles.webp",
+      "bytes": 44798,
+      "sha256": "4b40a2b91446934b20f4d918f8f93b79d80d748a1b4ba5222b26d63b7d778f8c"
+    },
+    {
+      "name": "Three of Swords",
+      "file": "three-of-swords.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/three-of-swords.webp",
+      "bytes": 41456,
+      "sha256": "edfd742f95bbfff2fef1a1ea136e864c9a9535f013bfc6e4c68fb65d138861da"
+    },
+    {
+      "name": "Three of Wands",
+      "file": "three-of-wands.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/three-of-wands.webp",
+      "bytes": 37508,
+      "sha256": "f4116df178b98a9cb1ace6b345ee6a07c47dad8a480ff801d5470b7d0e34b2aa"
+    },
+    {
+      "name": "Two of Cups",
+      "file": "two-of-cups.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/two-of-cups.webp",
+      "bytes": 38164,
+      "sha256": "592630d6c5b3011a40566ab90b53dbd73cd4d7c7f9fa53d11caac6807c829046"
+    },
+    {
+      "name": "Two of Pentacles",
+      "file": "two-of-pentacles.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/two-of-pentacles.webp",
+      "bytes": 51458,
+      "sha256": "b5769cb9e96d985227274489128198faff69f599e2e0df07ee904f2cc327c77f"
+    },
+    {
+      "name": "Two of Swords",
+      "file": "two-of-swords.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/two-of-swords.webp",
+      "bytes": 41410,
+      "sha256": "de76287681ed7e3e37a40e8d1b05d5e5596ad6cdbb3c8da585cd64ef3e933221"
+    },
+    {
+      "name": "Two of Wands",
+      "file": "two-of-wands.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/two-of-wands.webp",
+      "bytes": 40566,
+      "sha256": "93984bc9864fc5196793f5bda103e27225802781588717878157a5f122977564"
+    },
+    {
+      "name": "Wheel of Fortune",
+      "file": "wheel-of-fortune.webp",
+      "source": "https://oracle-divination.vercel.app/tarot/wheel-of-fortune.webp",
+      "bytes": 38734,
+      "sha256": "1d3688851020f4f7d9a4ded7de17a1011bb6a483e17a59b9527d3b95134001da"
+    }
+  ]
+}

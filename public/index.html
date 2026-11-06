@@ -19,16 +19,13 @@
 <meta name="twitter:title" content="Oracle · Find your answer with I Ching and Tarot">
 <meta name="twitter:description" content="Ask what is on your mind, toss the coins or pick your cards, and get a soft reading from Liu Yao I Ching and Tarot, with one small step for today. In English or 中文.">
 <meta name="twitter:image" content="https://oracle-divination.vercel.app/og.jpg">
-<meta name="theme-color" content="#1d2347">
+<meta name="theme-color" content="#f8ece9">
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="icon" href="/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/icon-180.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Oracle">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Jost:wght@400;500&family=Noto+Serif+SC:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   /* Midnight Lace: the night is for asking, cream lace paper is for the answer */
@@ -127,9 +124,7 @@ h2{font-size:34px;line-height:1.1;margin:6px 0 18px}
 .tc.rev .face{transform:rotate(180deg);background:var(--soft)}
 .tc em{font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);font-style:normal;min-height:1.3em}
 .tc.empty .face{background:none;border:1.5px dashed rgba(242,216,167,.4)}
-.tc.back .face{background:var(--back-bg);border:3px solid var(--card)}
-.tc.flip{animation:flip .5s ease both}
-@keyframes flip{from{transform:rotateY(90deg)}}
+.tc.selected .face{background:var(--back-bg);border:3px solid var(--card)}
 
 /* 1. start */
 .start{flex:1;display:flex;flex-direction:column;justify-content:center;gap:6px}
@@ -227,7 +222,7 @@ body::before{content:"";position:absolute;top:0;left:0;right:0;height:30px;backg
 @keyframes caught{30%{box-shadow:0 0 0 14px rgba(242,216,167,.5),0 0 110px 10px rgba(242,216,167,.7)}}
 .slots{display:grid;grid-template-columns:repeat(var(--n),1fr);gap:10px;width:100%;color:var(--page-ink)}
 .fan{position:relative;width:100%;height:170px}
-.fc{position:absolute;left:50%;bottom:10px;width:64px;height:100px;margin-left:-32px;border-radius:7px;cursor:pointer;padding:0;
+.fc{position:absolute;left:50%;bottom:10px;width:64px;height:96px;margin-left:-32px;border-radius:7px;cursor:pointer;padding:0;
   transform-origin:50% 230%;rotate:calc(var(--i) * 5.5deg);transition:translate .2s,opacity .3s;box-shadow:0 8px 16px -8px #000}
 .fc:hover,.fc:focus-visible{translate:0 -12px}
 .fc.picked{opacity:0;translate:0 -50px;pointer-events:none}
@@ -282,26 +277,52 @@ html[lang^=zh] h1{font-size:46px}
 html[lang^=zh] .kicker,html[lang^=zh] .today .lbl{letter-spacing:.2em}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
+<link rel="stylesheet" href="/rose.css">
+<link rel="stylesheet" href="/responsive.css">
+<link rel="stylesheet" href="/reading.css">
 </head>
-<body>
+<body data-screen="home">
 <div class="sky" aria-hidden="true"><div class="layer"></div><div class="layer"></div><div class="layer"></div></div>
-<main>
+<div class="ritual-vignette" aria-hidden="true"></div>
+<div class="candlelight" aria-hidden="true"></div>
+<div class="navigation-veil" aria-hidden="true"></div>
+<div class="cursor-starlight" aria-hidden="true"></div>
+ <div class="masthead"><div class="header-back"></div><button class="wordmark" data-go="home" aria-label="Oracle — Home">Oracle</button>
   <div class="tools">
     <button class="music" id="music" aria-pressed="false" aria-label="Background music"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18.5a2.5 2.5 0 1 1-2-2.45V5l11-2v12.5a2.5 2.5 0 1 1-2-2.45V7.1l-7 1.3z"/></svg></button>
     <button class="lang" id="lang" aria-label="Switch language">中文</button>
   </div>
+ </div>
+<main>
+  <section class="screen welcome on" id="s-home" aria-labelledby="t-home">
+    <div class="welcome-collage" aria-hidden="true">
+      <div class="welcome-corner corner-top"><img src="/textures/corners-original.png" alt=""></div>
+      <div class="welcome-corner corner-bottom"><img src="/textures/corners-original.png" alt=""></div>
+      <div class="welcome-starlight"><i style="--x:20%;--y:18%;--size:5px;--duration:4.8s;--delay:-1.2s"><svg viewBox="0 0 24 60"><path d="M12 0C13 24 14.5 28.2 24 30C14.5 31.8 13 36 12 60C11 36 9.5 31.8 0 30C9.5 28.2 11 24 12 0Z"/></svg></i><i style="--x:73%;--y:16%;--size:13px;--duration:6.2s;--delay:-3s"><svg viewBox="0 0 24 60"><path d="M12 0C13 24 14.5 28.2 24 30C14.5 31.8 13 36 12 60C11 36 9.5 31.8 0 30C9.5 28.2 11 24 12 0Z"/></svg></i><i style="--x:35%;--y:30%;--size:7px;--duration:5.3s;--delay:-2.4s"><svg viewBox="0 0 24 60"><path d="M12 0C13 24 14.5 28.2 24 30C14.5 31.8 13 36 12 60C11 36 9.5 31.8 0 30C9.5 28.2 11 24 12 0Z"/></svg></i><i style="--x:80%;--y:33%;--size:10px;--duration:6.8s;--delay:-0.8s"><svg viewBox="0 0 24 60"><path d="M12 0C13 24 14.5 28.2 24 30C14.5 31.8 13 36 12 60C11 36 9.5 31.8 0 30C9.5 28.2 11 24 12 0Z"/></svg></i><i style="--x:16%;--y:58%;--size:9px;--duration:5.7s;--delay:-4.1s"><svg viewBox="0 0 24 60"><path d="M12 0C13 24 14.5 28.2 24 30C14.5 31.8 13 36 12 60C11 36 9.5 31.8 0 30C9.5 28.2 11 24 12 0Z"/></svg></i><i style="--x:60%;--y:74%;--size:6px;--duration:4.6s;--delay:-0.6s"><svg viewBox="0 0 24 60"><path d="M12 0C13 24 14.5 28.2 24 30C14.5 31.8 13 36 12 60C11 36 9.5 31.8 0 30C9.5 28.2 11 24 12 0Z"/></svg></i><i style="--x:38%;--y:82%;--size:12px;--duration:6.6s;--delay:-2.7s"><svg viewBox="0 0 24 60"><path d="M12 0C13 24 14.5 28.2 24 30C14.5 31.8 13 36 12 60C11 36 9.5 31.8 0 30C9.5 28.2 11 24 12 0Z"/></svg></i><i style="--x:87%;--y:77%;--size:8px;--duration:5.1s;--delay:-1.8s"><svg viewBox="0 0 24 60"><path d="M12 0C13 24 14.5 28.2 24 30C14.5 31.8 13 36 12 60C11 36 9.5 31.8 0 30C9.5 28.2 11 24 12 0Z"/></svg></i><i style="--x:9%;--y:34%;--size:4px;--duration:6.9s;--delay:-4.4s"><svg viewBox="0 0 24 60"><path d="M12 0C13 24 14.5 28.2 24 30C14.5 31.8 13 36 12 60C11 36 9.5 31.8 0 30C9.5 28.2 11 24 12 0Z"/></svg></i><i style="--x:54%;--y:14%;--size:6px;--duration:5.5s;--delay:-3.5s"><svg viewBox="0 0 24 60"><path d="M12 0C13 24 14.5 28.2 24 30C14.5 31.8 13 36 12 60C11 36 9.5 31.8 0 30C9.5 28.2 11 24 12 0Z"/></svg></i><i style="--x:70%;--y:54%;--size:9px;--duration:4.9s;--delay:-1.5s"><svg viewBox="0 0 24 60"><path d="M12 0C13 24 14.5 28.2 24 30C14.5 31.8 13 36 12 60C11 36 9.5 31.8 0 30C9.5 28.2 11 24 12 0Z"/></svg></i><i style="--x:29%;--y:63%;--size:5px;--duration:6.1s;--delay:-3.9s"><svg viewBox="0 0 24 60"><path d="M12 0C13 24 14.5 28.2 24 30C14.5 31.8 13 36 12 60C11 36 9.5 31.8 0 30C9.5 28.2 11 24 12 0Z"/></svg></i><i style="--x:45%;--y:68%;--size:11px;--duration:5.4s;--delay:-2.1s"><svg viewBox="0 0 24 60"><path d="M12 0C13 24 14.5 28.2 24 30C14.5 31.8 13 36 12 60C11 36 9.5 31.8 0 30C9.5 28.2 11 24 12 0Z"/></svg></i><i style="--x:91%;--y:47%;--size:7px;--duration:6.3s;--delay:-4.9s"><svg viewBox="0 0 24 60"><path d="M12 0C13 24 14.5 28.2 24 30C14.5 31.8 13 36 12 60C11 36 9.5 31.8 0 30C9.5 28.2 11 24 12 0Z"/></svg></i><i style="--x:58%;--y:86%;--size:14px;--duration:5.9s;--delay:-3.2s"><svg viewBox="0 0 24 60"><path d="M12 0C13 24 14.5 28.2 24 30C14.5 31.8 13 36 12 60C11 36 9.5 31.8 0 30C9.5 28.2 11 24 12 0Z"/></svg></i><i style="--x:18%;--y:85%;--size:6px;--duration:6.7s;--delay:-1.1s"><svg viewBox="0 0 24 60"><path d="M12 0C13 24 14.5 28.2 24 30C14.5 31.8 13 36 12 60C11 36 9.5 31.8 0 30C9.5 28.2 11 24 12 0Z"/></svg></i></div>
+    </div>
+    <div class="welcome-content">
+      <h1 id="t-home" lang="en"><span>Find your</span> <span>Answer</span></h1>
+      <div class="welcome-emblem" aria-hidden="true">
+        <svg class="planet-halo halo-back" viewBox="0 0 320 160"><path d="M14 80a146 40 0 0 1 292 0" vector-effect="non-scaling-stroke"/></svg>
+        <div class="welcome-sigil"><img src="/textures/celestial-original.png" alt=""></div>
+        <svg class="planet-halo halo-front" viewBox="0 0 320 160"><path d="M306 80a146 40 0 0 1 -292 0" vector-effect="non-scaling-stroke"/></svg>
+      </div>
+      <p class="welcome-hint" id="welcome-hint" data-t="enterHint">Click anywhere to enter Oracle</p>
+    </div>
+    <button class="welcome-hitarea" data-go="start" aria-labelledby="welcome-hint"></button>
+  </section>
+
   <!-- 1. start -->
-  <section class="screen on" id="s-start" aria-labelledby="t-start">
+  <section class="screen" id="s-start" aria-labelledby="t-start">
     <div class="start">
       <header>
-        <p class="kicker">Oracle</p>
-        <h1 id="t-start" data-t="h1">Find your answer</h1>
-        <p class="sub" data-t="sub">Find your quiet sign</p>
+        <h1 id="t-start" lang="en" data-t="dailyH">Today’s Oracle</h1>
       </header>
-      <div class="altar" aria-hidden="true">
-        <div class="doily"></div>
-        <div class="daycard cardback" id="daycard"></div>
+      <div class="altar">
+        <div class="halo"></div><div class="doily"></div>
+        <button class="daycard cardback card-zoom" id="daycard" type="button" disabled></button>
         <i class="coin heads"></i><i class="coin"></i><i class="coin heads"></i>
+<span class="orbit-star one"><svg viewBox="0 0 40 40"><path d="M20 1Q20 20 39 20Q20 20 20 39Q20 20 1 20Q20 20 20 1Z"/><circle cx="20" cy="20" r="6"/></svg></span><span class="orbit-star two"><svg viewBox="0 0 40 40"><path d="M20 1Q20 20 39 20Q20 20 20 39Q20 20 1 20Q20 20 20 1Z"/><circle cx="20" cy="20" r="6"/></svg></span><span class="orbit-star three"><svg viewBox="0 0 40 40"><path d="M20 1Q20 20 39 20Q20 20 20 39Q20 20 1 20Q20 20 20 1Z"/><circle cx="20" cy="20" r="6"/></svg></span>
       </div>
       <div class="today" id="today" aria-live="polite"></div>
       <div class="ritual" id="ritual-start"></div>
@@ -309,48 +330,48 @@ html[lang^=zh] .kicker,html[lang^=zh] .today .lbl{letter-spacing:.2em}
     </div>
     <div class="foot">
       <button class="btn" data-go="how" data-t="start">Ask the oracle</button>
-      <details class="about"><summary data-t="about">What is this?</summary>
-        <p data-t="aboutP">Discover soft, AI-powered guidance from Liu-Yao, ancient Chinese I Ching divination, and Tarot. When you feel unsure amid choices, get a small nudge to move forward.</p>
-      </details>
     </div>
   </section>
 
   <!-- 2. choose how to read it first -->
   <section class="screen" id="s-how" aria-labelledby="t-how">
-    <div class="top"><button class="back" data-go="start" data-t="home">&larr; Home</button></div>
+    <div class="top"><button class="back" data-go="home" data-t="home">Home</button></div>
+    <div class="reading-choice">
     <h2 id="t-how" data-t="howH">Choose your reading</h2>
     <div class="doors">
-      <button class="door lace" data-way="iching">
+      <button class="door" data-way="iching">
         <span class="art" aria-hidden="true"><i class="coin heads"></i><i class="coin"></i><i class="coin heads"></i></span>
-        <span class="zh" id="zh-iching" aria-hidden="true">六爻</span><b id="b-iching">I Ching</b><small id="sub-iching"></small>
+        <span class="zh" id="zh-iching" aria-hidden="true">六爻</span><b id="b-iching">I Ching</b><small id="sub-iching" hidden></small>
       </button>
-      <button class="door lace" data-way="tarot">
+      <button class="door" data-way="tarot">
         <span class="art minis" aria-hidden="true"><i class="cardback"></i><i class="cardback"></i><i class="cardback"></i></span>
-        <span class="zh" aria-hidden="true">塔罗</span><b data-t="tarot">Tarot</b><small id="sub-tarot"></small>
+        <span class="zh" aria-hidden="true">塔罗</span><b data-t="tarot">Tarot</b><small id="sub-tarot" hidden></small>
       </button>
     </div>
     <label class="toggle"><input type="checkbox" id="yn" role="switch"><span class="track" aria-hidden="true"><i></i></span><span data-t="yn">Just a yes or no?</span></label>
-    <p class="toggle-note" id="yn-note"></p>
+    <p class="sr" id="yn-note"></p>
+    </div>
   </section>
 
   <!-- 3. then the question -->
   <section class="screen" id="s-ask" aria-labelledby="t-ask">
-    <div class="top"><button class="back" data-go="how" data-t="back">&larr; Back</button></div>
+    <div class="top"><button class="back" data-go="how" data-t="back">Back</button></div>
     <h2 id="t-ask" data-t="askH">What&rsquo;s on your mind?</h2>
-    <p class="echo" id="method"></p>
+    <p class="sr" id="method"></p>
+    <div class="question-content">
     <form id="ask">
       <label class="sr" for="q">Your question</label>
-      <textarea id="q" maxlength="300" rows="3" data-tp="ph" placeholder="Ask it the way you&rsquo;d ask a friend"></textarea>
-      <div class="count"><span id="n">0</span>/300</div>
+      <textarea id="q" maxlength="300" rows="3" data-tp="ph" placeholder="Set down the question on your mind…"></textarea>
+      <div class="count sr"><span id="n">0</span>/300</div>
     </form>
     <button type="button" class="prompt" id="prompt"><span data-t="prompt">Today&rsquo;s prompt</span><b id="prompt-q"></b></button>
-    <p class="hint" data-t="hint">Questions for genuine reflection are recommended. Playful or nonsensical prompts may yield meaningless readings.</p>
     <div class="foot"><button class="btn" form="ask" type="submit" id="next" disabled data-t="next">Continue</button></div>
+    </div>
   </section>
 
   <!-- 4. the cast -->
   <section class="screen" id="s-cast" aria-labelledby="t-cast">
-    <div class="top"><button class="back" id="cast-back" data-t="back">&larr; Back</button></div>
+    <div class="top"><button class="back" id="cast-back" data-t="back">Back</button></div>
     <h2 id="t-cast"></h2>
     <p class="echo" id="cast-q"></p>
     <div class="stage" id="stage"></div>
@@ -359,27 +380,40 @@ html[lang^=zh] .kicker,html[lang^=zh] .today .lbl{letter-spacing:.2em}
 
   <!-- 5. the keepsake -->
   <section class="screen" id="s-result" aria-labelledby="r-title">
-    <div class="top"><button class="back" data-go="start" data-t="home">&larr; Home</button></div>
-    <article class="lace keep" aria-live="polite">
-      <i class="lc tl"></i><i class="lc tr"></i><i class="lc bl"></i><i class="lc br"></i><i class="bow"></i>
+    <div class="top"><button class="back" data-go="home" data-t="home">Home</button></div>
+    <svg class="material-filters" width="0" height="0" aria-hidden="true"><defs><filter id="paper-ink" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0 0 0 0 .47 0 0 0 0 .42 0 0 0 0 .40 -.2126 -.7152 -.0722 0 1"/><feComposite in2="SourceGraphic" operator="in"/></filter></defs></svg>
+    <div class="result-materials" aria-hidden="true"><img class="material-oval" src="/materials/dotted-oval.webp" alt=""><img class="material-ascii" src="/materials/ascii-paper.webp" alt=""><img class="material-lily" src="/materials/grain-lily.webp" alt=""></div>
+    <article class="keep" aria-live="polite">
       <p class="date" id="r-date"></p>
       <p class="yourq" id="r-q"></p>
       <div class="sign" id="r-sign"></div>
       <p class="signname" id="r-name"></p>
       <h3 id="r-title"></h3>
-      <p class="body" id="r-body"></p>
+      <div class="body" id="r-body"></div>
+      <div class="answer-ribbon" id="r-ribbon" aria-hidden="true"></div>
       <div class="step" id="r-step"><span data-t="step">Small step</span><p></p></div>
       <details class="how"><summary data-t="how">How this was cast</summary><p id="r-how"></p></details>
     </article>
     <div class="actions"><button class="btn ghost" id="save" data-t="save">Save image</button><button class="btn" data-go="how" data-t="again">Ask another</button></div>
     <div class="ritual" id="ritual-result" aria-live="polite"></div>
     <div class="a2hs" id="a2hs" hidden></div>
-    <p class="note" data-t="note">For reflection and fun. You already know more than you think.</p>
   </section>
 </main>
+<dialog id="card-viewer" aria-labelledby="card-viewer-title">
+  <div class="card-viewer-content"><img id="card-viewer-art" alt=""><p id="card-viewer-title"></p></div>
+  <button type="button" id="card-viewer-close" class="card-viewer-close" data-t="closeCard">Close</button>
+</dialog>
 
 <script>
 const $ = (s) => document.querySelector(s);
+document.querySelectorAll('.altar > :not(#daycard)').forEach((element) => element.setAttribute('aria-hidden', 'true'));
+// Keep the original navigation buttons/listeners, but place them in the shared header.
+document.querySelectorAll('.screen > .top').forEach((row) => {
+  const button = row.querySelector('button');
+  button.dataset.screenLink = row.parentElement.id.slice(2);
+  $('.header-back').append(button);
+  row.remove();
+});
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
@@ -398,9 +432,10 @@ const tri = (lines) => [TRI[lines.slice(3).join('')], TRI[lines.slice(0, 3).join
 const gua = (h) => { const [u, l] = tri(h.lines); return u[0] === l[0] ? `${u[0]}为${u[1]}` : `${u[1]}${l[1]}${h.zh}`; };
 const T = {
   en: {
-    lang: '中文', locale: 'en-US', h1: 'Find your answer', sub: 'Find your quiet sign', start: 'Ask the oracle', about: 'What is this?',
+    localReading: 'Local card meanings', localNote: 'This reading uses preset card and hexagram meanings for the local style preview. It is not an AI interpretation of your question.', altarCaption: 'a quiet moment, a little clarity', enterHint: 'Click anywhere to enter Oracle', lang: '中文', locale: 'en-US', h1: '<span>Find your</span> <span>Answer</span>', sub: 'Find your quiet sign', start: 'Ask the oracle', about: 'What is this?',
     aboutP: 'Discover soft, AI-powered guidance from Liu-Yao, ancient Chinese I Ching divination, and Tarot. When you feel unsure amid choices, get a small nudge to move forward.',
-    home: '&larr; Home', back: '&larr; Back', askH: 'What&rsquo;s on your mind?', ph: 'Ask it the way you’d ask a friend', prompt: 'Today&rsquo;s prompt',
+    dailyH: '<span>Today’s</span> <span>Oracle</span>', closeCard: 'Close', zoomCard: 'View card',
+    home: 'Home', back: 'Back', askH: 'What&rsquo;s on your mind?', ph: 'Set down the question on your mind…', prompt: 'Today&rsquo;s prompt',
     hint: 'Questions for genuine reflection are recommended. Playful or nonsensical prompts may yield meaningless readings.', next: 'Continue',
     howH: 'Choose your reading', tarot: 'Tarot', yn: 'Just a yes or no?', ynNote: 'Ask something that can be answered yes or no.',
     iching: (yn) => 'I Ching', subI: (yn) => (yn ? 'Catch the exact second' : 'Toss three coins, six times'), subT: (yn) => (yn ? 'Three cards, counted upright' : 'Four cards, straight to the core'),
@@ -412,6 +447,7 @@ const T = {
     dial0: 'Tap the dial when the moment feels right.<br>The exact second you choose casts your hexagram.', dialWait: 'Reading this moment&hellip;',
     dialMoves: (c) => `Line ${c.moving} moves, turning toward ${esc(c.changed.name)}.`,
     fan0: (n) => `Hold your question in mind, then pick ${n} cards.`, fanN: (k) => `${k} more`, flipping: 'Turning them over…',
+    lightCandle: 'Light the candle', candleInvite: 'Light the candle. Let your answer unfold.', candleWait: 'The candle is lit. A quiet moment…', tossLabel: 'Toss the coins',
     hexName: (c) => `${c.n} · ${esc(c.name)}<span>${esc(c.zh)}</span>`, hexPlain: (c) => `${c.n} · ${c.name.toUpperCase()}  ${c.zh || ''}`,
     verdict: (v) => v || '', cardName: (c) => [c.name, c.zh],
     howText: {
@@ -425,7 +461,7 @@ const T = {
       'What is this relationship trying to teach me?', 'Should I rest this weekend instead of making plans?', 'What am I avoiding that needs my attention?',
       'Is this the right time to ask for what I want at work?', 'How can I take better care of myself right now?', 'Should I trust my first instinct on this?',
       'What would help me feel settled about my work?', 'Is it time to let this go?', 'What is the next step on the thing I keep putting off?', 'Is now a good time to start the project I keep thinking about?'],
-    backs: { dots: 'Gold Polka', stars: 'Starfield', lace: 'Rose Lace', moon: 'Moon Phase' }, backLabel: (n) => `${n} card back`,
+    backs: { dots: 'Rose Polka', stars: 'Starfield', lace: 'Rose Lace', moon: 'Moon Phase' }, backLabel: (n) => `${n} card back`,
     reopen: (d) => `Reopen your reading from ${d}`, tapStar: ' Tap a star to reopen that day.',
     ritual: {
       done: (name) => `Your constellation${name ? ' of ' + esc(name) : ''} is complete. A new sky starts tomorrow.`,
@@ -439,9 +475,10 @@ const T = {
     a2hsIos: 'Make it a daily ritual: tap <b>Share</b>, then <b>Add to Home Screen</b>.', a2hs: 'Make it a daily ritual.', a2hsBtn: 'Add to Home Screen',
   },
   zh: {
-    lang: 'EN', locale: 'zh-CN', h1: '寻找你的答案', sub: '寻找你的静谧启示', start: '开始占问', about: '这是什么？',
+    localReading: '本地牌义', localNote: '此解读由预置牌义与卦义组合，用于本地样式预览，不会通过 AI 分析具体问题。', altarCaption: '静候片刻，启示将至', enterHint: '点击页面任意位置 进入神谕', lang: 'EN', locale: 'zh-CN', h1: '<span>Find your</span> <span>Answer</span>', sub: '寻找你的静谧启示', start: '开始占问', about: '这是什么？',
     aboutP: '借助 AI，从六爻（中国古老的易经占卜）与塔罗中获得温柔的指引。当你在选择面前犹豫不决时，给你一点继续前进的勇气。',
-    home: '&larr; 首页', back: '&larr; 返回', askH: '你想问什么？', ph: '像问朋友一样问出来', prompt: '今日提问',
+    dailyH: '<span>Today’s</span> <span>Oracle</span>', closeCard: '关闭', zoomCard: '放大查看',
+    home: '首页', back: '返回', askH: '你想问什么？', ph: '把心里的疑问，留在这里…', prompt: '今日提问',
     hint: '建议提出真诚、值得思考的问题。随意或无意义的提问，可能得到没有意义的解读。', next: '继续',
     howH: '选择解读方式', tarot: '塔罗', yn: '只想知道是或否？', ynNote: '请问一个能用是或否回答的问题。',
     iching: (yn) => (yn ? '小六爻' : '六爻'), subI: (yn) => (yn ? '抓住此刻的那一秒' : '三枚铜钱，掷六次'), subT: (yn) => (yn ? '三张牌，看正逆位' : '四张牌，直指核心'),
@@ -453,6 +490,7 @@ const T = {
     dial0: '在感觉对的时刻点击表盘。<br>你选中的那一秒，将起出你的卦。', dialWait: '正在解读此刻&hellip;',
     dialMoves: (c) => `第${c.moving}爻为动爻，变为${esc(gua(c.changed))}。`,
     fan0: (n) => `心中默念你的问题，然后抽${n}张牌。`, fanN: (k) => `还剩${k}张`, flipping: '正在翻牌…',
+    lightCandle: '点亮蜡烛', candleInvite: '点亮蜡烛，让答案浮现。', candleWait: '烛火已亮，静候神谕…', tossLabel: '投掷铜钱',
     hexName: (c) => `第${c.n}卦 · ${esc(gua(c))}`, hexPlain: (c) => `第${c.n}卦 · ${gua(c)}`,
     verdict: (v) => VERDICT_ZH[v] || '', cardName: (c) => [c.zh, c.name],
     howText: {
@@ -465,7 +503,7 @@ const T = {
     prompts: ['我准备好放下什么了？', '这周我应该主动联系他们吗？', '这周我的精力应该放在哪里？', '这个机会值得答应吗？', '这段关系想教会我什么？',
       '这个周末我应该休息，而不是安排计划吗？', '我在逃避什么需要正视的事情？', '现在是开口争取我想要的东西的好时机吗？', '现在我该如何更好地照顾自己？',
       '在这件事上，我应该相信自己的第一直觉吗？', '什么能让我对工作感到更安定？', '是时候放下这件事了吗？', '我一直拖延的事情，下一步是什么？', '现在是开始那个一直想做的项目的好时机吗？'],
-    backs: { dots: '金色波点', stars: '星空', lace: '玫瑰蕾丝', moon: '月相' }, backLabel: (n) => `${n}牌背`,
+    backs: { dots: '灰粉波点', stars: '星空', lace: '玫瑰蕾丝', moon: '月相' }, backLabel: (n) => `${n}牌背`,
     reopen: (d) => `重温${d}的解读`, tapStar: '点击星星，可重温当天的解读。',
     ritual: {
       done: (name) => `你的${name ? '「' + esc(name) + '」' : ''}星座已完成。明天开启新的星空。`,
@@ -486,21 +524,77 @@ function applyLang() {
   document.querySelectorAll('[data-t]').forEach((el) => (el.innerHTML = t(el.dataset.t)));
   document.querySelectorAll('[data-tp]').forEach((el) => (el.placeholder = t(el.dataset.tp)));
   $('#lang').textContent = t('lang');
-  $('#music').setAttribute('aria-label', lang === 'zh' ? '背景音乐' : 'Background music');
+  $('#music').setAttribute('aria-label', lang === 'zh' ? '背景音乐与仪式音效' : 'Music and ritual sounds');
   $('#prompt-q').textContent = todays(t('prompts'));
   doors(); renderRitual($('#ritual-start')); renderBacks();
   if (lastSign) renderToday(lastSign);
   if ($('#s-result').classList.contains('on') && current) show(current, false, '', true);
 }
 
-function go(name) {
-  document.querySelectorAll('.screen').forEach((s) => s.classList.toggle('on', s.id === 's-' + name));
-  window.scrollTo(0, 0);
-  if (name === 'ask') setTimeout(() => $('#q').focus(), 50);
-  if (name === 'start') { renderRitual($('#ritual-start')); renderBacks(); }
+let navigationVersion = 0, navigationAnimation = null;
+let pageScrolled = false;
+function updateNavigationVeil() {
+  const next = scrollY > 0;
+  if (next === pageScrolled) return;
+  pageScrolled = next;
+  document.documentElement.classList.toggle('page-scrolled', next);
+}
+addEventListener('scroll', updateNavigationVeil, { passive: true });
+updateNavigationVeil();
+const navigationTiming = { fadeOut: 420, pause: 140, fadeIn: 760 };
+async function go(name) {
+  const destination = $('#s-' + name);
+  if (!destination) return;
+  const version = ++navigationVersion, outgoing = $('.screen.on'), surface = $('main');
+  const startOpacity = getComputedStyle(surface).opacity;
+  navigationAnimation?.cancel(); navigationAnimation = null;
+  surface.style.removeProperty('will-change');
+  document.querySelectorAll('.screen').forEach((screen) => { screen.inert = false; screen.style.removeProperty('will-change'); });
+  const quiet = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const changing = outgoing !== destination;
+  // A repeated request during a reveal resumes from its visible opacity.
+  if (!changing && (quiet || Number(startOpacity) >= 1)) return;
+  if (changing && outgoing && !quiet && surface.animate) {
+    outgoing.inert = true;
+    surface.style.willChange = 'opacity';
+    navigationAnimation = surface.animate([{ opacity: startOpacity }, { opacity: 0 }], {
+      duration: navigationTiming.fadeOut, easing: 'cubic-bezier(.4,0,.6,1)', fill: 'forwards',
+    });
+    await navigationAnimation.finished.catch(() => {});
+    if (version !== navigationVersion) return;
+    await sleep(navigationTiming.pause);
+    if (version !== navigationVersion) return;
+  }
+  navigationAnimation?.cancel(); navigationAnimation = null;
+  if (changing) {
+    document.body.dataset.screen = name;
+    document.querySelectorAll('.screen').forEach((screen) => {
+      screen.classList.toggle('on', screen === destination); screen.inert = false; screen.style.removeProperty('will-change');
+    });
+    window.scrollTo(0, 0);
+    if (name === 'start') { renderRitual($('#ritual-start')); renderBacks(); }
+  }
+  if (!quiet && surface.animate) {
+    destination.inert = true;
+    surface.style.willChange = 'opacity';
+    navigationAnimation = surface.animate([{ opacity: changing ? 0 : startOpacity }, { opacity: 1 }], {
+      duration: navigationTiming.fadeIn, easing: 'cubic-bezier(.3,0,.25,1)', fill: 'both',
+    });
+    await navigationAnimation.finished.catch(() => {});
+    if (version !== navigationVersion) return;
+    navigationAnimation?.cancel(); navigationAnimation = null;
+    surface.style.removeProperty('will-change'); destination.inert = false;
+  }
+  if (changing) {
+    const focusTarget = destination.querySelector('h1,h2,h3');
+    if (focusTarget) {
+      focusTarget.tabIndex = -1;
+      focusTarget.focus({ preventScroll: true });
+    }
+  }
 }
 document.addEventListener('click', (e) => {
-  const g = e.target.closest('[data-go]'); if (g) { state.run = null; go(g.dataset.go); }
+  const g = e.target.closest('[data-go]'); if (g) { leaveRitual(); go(g.dataset.go); }
   const d = e.target.closest('.door'); if (d) { state.way = d.dataset.way; doors(); go('ask'); }
   const s = e.target.closest('button.star'); if (s) openDay(s.dataset.day);
 });
@@ -522,6 +616,52 @@ function shoot() {
   s.style.cssText = `left:${60 + Math.random() * 30}%;top:${5 + Math.random() * 20}%`;
   document.querySelector('.layer').append(s); setTimeout(() => s.remove(), 1300);
 }
+
+// Small, finite glints follow a mouse; nothing runs while the pointer rests.
+(() => {
+  const layer = $('.cursor-starlight');
+  const finePointer = matchMedia('(any-hover: hover) and (any-pointer: fine)');
+  const quietMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  const star = '<svg viewBox="0 0 24 60" preserveAspectRatio="none"><path d="M12 0C13 24 14.5 28.2 24 30C14.5 31.8 13 36 12 60C11 36 9.5 31.8 0 30C9.5 28.2 11 24 12 0Z"/></svg>';
+  let frame = 0, queued = null, last = null, emittedAt = 0;
+  const clear = () => {
+    cancelAnimationFrame(frame); frame = 0; queued = null; last = null; emittedAt = 0;
+    layer.replaceChildren();
+  };
+  const glint = (x, y, small, vx, vy) => {
+    while (layer.childElementCount >= 32) layer.firstElementChild.remove();
+    const particle = document.createElement('i');
+    const size = small ? 6 + Math.random() * 5 : 15 + Math.random() * 9;
+    particle.className = 'cursor-spark'; particle.innerHTML = star;
+    particle.style.cssText = `left:${x}px;top:${y}px;--spark-size:${size}px;--spark-life:${540 + Math.random() * 220}ms;--spark-dx:${(Math.random() - .5) * 12 - vx * 9}px;--spark-dy:${8 + Math.random() * 12 - vy * 6}px;--spark-angle:${(Math.random() - .5) * 30}deg`;
+    layer.append(particle);
+  };
+  const paint = (now) => {
+    frame = 0;
+    const point = queued; queued = null;
+    if (!point || now - emittedAt < 36) return;
+    const dx = last ? point.x - last.x : 0, dy = last ? point.y - last.y : 0;
+    const distance = Math.hypot(dx, dy);
+    if (last && distance < 7) return;
+    const continuous = last && distance < 180 && now - emittedAt < 160;
+    const count = continuous ? Math.min(3, Math.max(1, Math.floor(distance / 18))) : 1;
+    for (let i = 1; i <= count; i++) {
+      const f = i / count;
+      glint(continuous ? last.x + dx * f : point.x, continuous ? last.y + dy * f : point.y, i < count, distance ? dx / distance : 0, distance ? dy / distance : 0);
+    }
+    last = point; emittedAt = now;
+  };
+  document.addEventListener('pointermove', (event) => {
+    if (event.pointerType !== 'mouse' || !finePointer.matches || quietMotion.matches || document.hidden) return;
+    queued = { x: event.clientX, y: event.clientY };
+    if (!frame) frame = requestAnimationFrame(paint);
+  }, { passive: true });
+  layer.addEventListener('animationend', (event) => event.target.closest('.cursor-spark')?.remove());
+  document.addEventListener('pointerout', (event) => { if (!event.relatedTarget) clear(); });
+  document.addEventListener('visibilitychange', () => { if (document.hidden) clear(); });
+  window.addEventListener('blur', clear);
+  finePointer.addEventListener('change', clear); quietMotion.addEventListener('change', clear);
+})();
 
 // ---- daily ritual: one star per day asked, seven in a row make a constellation ----
 const dayKey = (d = new Date()) => d.toLocaleDateString('en-CA'); // local YYYY-MM-DD
@@ -569,7 +709,7 @@ function renderRitual(el, fresh, reward) {
   const msg = reward ? `<span class="reward">${esc(reward)}</span>`
     : today ? (lit === 7 ? m.done(last?.name) : fresh ? m.fresh(lit) : m.today(lit))
     : streak ? (lit ? m.streak(streak, lit) : m.restart) : m.none;
-  el.innerHTML = `<div class="stars">${stars}</div><p>${msg}${tappable && !fresh && !reward ? t('tapStar') : ''}</p>`;
+  el.innerHTML = `<div class="stars">${stars}</div><p class="sr">${msg}${tappable && !fresh && !reward ? t('tapStar') : ''}</p>`;
 }
 function applyBack() { document.body.dataset.back = load('oracle.back', 'dots'); }
 function renderBacks() {
@@ -580,11 +720,13 @@ function renderBacks() {
 $('#backs').addEventListener('click', (e) => { const b = e.target.closest('[data-back]'); if (b) { save('oracle.back', b.dataset.back); applyBack(); renderBacks(); } });
 
 // ---- free daily sign (same for everyone, no AI call) ----
+const cardSrc = (card) => '/tarot/' + encodeURIComponent(String(card.name).toLowerCase().replace(/\s+/g, '-')) + '.webp';
+const cardArt = (card) => `<img class="tarot-art" src="${esc(cardSrc(card))}" alt="" decoding="async" onload="this.parentElement.classList.add('has-art');if(this.parentElement.classList.contains('card-zoom'))this.parentElement.disabled=false" onerror="this.parentElement.classList.remove('has-art');this.remove()">`;
 const hexHTML = (lines, moving) => `<div class="hex">${lines.map((l, i) => `<div class="ln ${l ? 'yang' : 'yin'}${i === moving - 1 ? ' moving' : ''}"><i></i><i></i></div>`).join('')}</div>`;
 async function loadToday() {
-  let s = load('oracle.sign', null);
+  let s = load('oracle.sign.v2', null);
   if (s?.day !== dayKey()) {
-    try { s = await (await fetch('/api/daily?d=' + dayKey())).json(); if (s?.kind) save('oracle.sign', s); } catch { return; }
+    try { s = await (await fetch('/api/daily?d=' + dayKey())).json(); if (s?.kind) save('oracle.sign.v2', s); } catch { return; }
   }
   renderToday(s);
 }
@@ -593,10 +735,13 @@ function renderToday(s) {
   if (!s?.kind) return;
   lastSign = s;
   const dc = $('#daycard');
-  dc.className = 'daycard faceup';
-  dc.innerHTML = s.kind === 'hex' ? `${hexHTML(s.lines)}<span class="zh">${esc(s.zh)}</span>` : `<b>${esc(s.glyph)}</b><span class="zh">${esc(s.zh)}</span>`;
+  dc.className = 'daycard faceup card-zoom'; dc.disabled = true;
+  dc.dataset.cardTitle = [s.zh, s.name].filter(Boolean).join(' · ');
+  dc.dataset.reversed = String(!!s.reversed);
+  dc.setAttribute('aria-label', `${t('zoomCard')} ${dc.dataset.cardTitle}`);
+  dc.innerHTML = s.kind === 'hex' ? `${hexHTML(s.lines)}<span class="zh">${esc(s.zh)}</span>` : `<b>${esc(s.glyph)}</b><span class="zh">${esc(s.zh)}</span>${cardArt(s)}`;
   const [nm, line] = t('todaySign')(s);
-  $('#today').innerHTML = `<p class="lbl">${t('today')}</p><p class="nm">${nm}</p><p class="ad">${esc(line)}</p>`;
+  $('#today').innerHTML = `<p class="lbl">${t('today')}</p><p class="nm">${nm}</p>`;
 }
 
 // ---- choose how, then ask ----
@@ -631,18 +776,71 @@ function ask(mode, extra = {}) {
 
 // ---- the cast: a ritual per mode ----
 const once = (el) => new Promise((r) => el.addEventListener('click', r, { once: true }));
-$('#cast-back').addEventListener('click', () => { state.run = null; go('ask'); });
+function leaveRitual() {
+  state.run?.animations?.forEach((animation) => {
+    const target = animation.effect?.target;
+    // Hold the visible pose while navigation fades it, rather than snapping back.
+    const visible = target?.closest('.screen.on') ? getComputedStyle(target) : null;
+    const pose = visible ? { transform: visible.transform, opacity: visible.opacity } : null;
+    animation.cancel();
+    if (pose) Object.assign(target.style, pose);
+  });
+  state.run = null;
+}
+function ritualAnimate(run, element, frames, options) {
+  const animation = element.animate(frames, { fill: 'forwards', ...options });
+  (run.animations ??= new Set()).add(animation);
+  return animation;
+}
+async function gatherCoins(run, button) {
+  if (reduced) { await sleep(180); return; }
+  await sleep(240);
+  if (run !== state.run) return;
+  button.classList.add('gathering');
+  const centre = button.getBoundingClientRect().left + button.offsetWidth / 2;
+  const motions = [...button.querySelectorAll('.coin-flight')].map((coin, k) => {
+    const box = coin.getBoundingClientRect(), dx = centre - (box.left + box.width / 2) + (k - 1) * 3;
+    return ritualAnimate(run, coin, [
+      { transform: 'translate(0,0) rotate(0)' },
+      { transform: `translate(${dx}px,${-5 - k * 3}px) rotate(${(k - 1) * 14}deg)` },
+    ], { duration: 780, delay: k * 45, easing: 'cubic-bezier(.22,.65,.24,1)' });
+  });
+  await Promise.all(motions.map((animation) => animation.finished.catch(() => {})));
+  if (run !== state.run) return;
+  button.classList.add('sealed');
+  button.closest('.stage').classList.add('cast-complete');
+  await sleep(420);
+}
+async function closeCandle(run, candle) {
+  if (reduced) { await sleep(180); return; }
+  candle.classList.add('blessing');
+  const aura = candle.querySelector('.candle-aura');
+  const glow = ritualAnimate(run, aura, [
+    { opacity: 1, transform: 'translate(-50%,-50%) scale(1)' },
+    { opacity: 1, transform: 'translate(-50%,-50%) scale(1.35)', offset: .55 },
+    { opacity: .65, transform: 'translate(-50%,-50%) scale(1.5)' },
+  ], { duration: 1100, easing: 'ease-in-out' });
+  await glow.finished.catch(() => {});
+  if (run !== state.run) return;
+  await sleep(360);
+}
+$('#cast-back').addEventListener('click', () => { leaveRitual(); go('ask'); });
 function cast() {
+  leaveRitual();
   const mode = modeOf(), run = (state.run = {});
+  $('#stage').classList.remove('cast-complete');
+  $('#stage').dataset.ritual = mode.startsWith('tarot') ? 'tarot' : mode;
   $('#t-cast').textContent = t('titles')[mode];
   $('#cast-q').textContent = `“${state.question}”`;
   $('#instr').innerHTML = '';
+  $('#instr').classList.remove('candle-invite');
   go('cast');
   const ritual = mode === 'yesno' ? dial : mode === 'guidance' ? coins : fan;
   ritual(run, mode).catch((err) => {
     if (run !== state.run) return;
     $('#stage').innerHTML = `<p class="err">${esc(err.message)}</p><button class="btn" style="width:auto;padding:12px 26px" id="retry">${t('retry')}</button>`;
     $('#instr').textContent = '';
+    $('#instr').classList.remove('candle-invite');
     $('#retry').onclick = cast;
   });
 }
@@ -650,7 +848,7 @@ function cast() {
 async function coins(run, mode) {
   const pending = ask(mode); pending.catch(() => {});
   $('#stage').innerHTML = `<div class="hex">${'<div class="ln slot"><i></i><i></i></div>'.repeat(6)}</div>
-    <button class="toss" id="toss" aria-label="Toss the coins">${'<i class="coin heads"></i>'.repeat(3)}</button>`;
+    <button class="toss" id="toss" aria-label="${t('tossLabel')}">${[-1,0,1].map((x,k) => `<span class="coin-flight" style="--drift:${x * 15}px;--lean:${x * 12}deg;--delay:${k * 65}ms"><i class="coin heads"></i><span class="coin-shadow" aria-hidden="true"></span></span>`).join('')}<span class="coin-seal" aria-hidden="true">${SPARK}</span></button>`;
   const rows = document.querySelectorAll('#stage .ln'), btn = $('#toss'), cs = btn.querySelectorAll('.coin');
   let data;
   for (let i = 0; i < 6; i++) {
@@ -658,25 +856,31 @@ async function coins(run, mode) {
     await once(btn);
     if (run !== state.run) return;
     btn.disabled = true;
+    btn.classList.add('throwing');
     cs.forEach((c) => c.classList.add('spin'));
-    const slow = setTimeout(() => cs.forEach((c) => c.classList.add('wait')), 760); // still waiting on the reading
-    [data] = await Promise.all([pending, sleep(reduced ? 0 : 780)]).finally(() => clearTimeout(slow));
+    [data] = await Promise.all([pending, sleep(reduced ? 0 : 820)]);
     if (run !== state.run) return;
-    cs.forEach((c, k) => { c.classList.remove('spin', 'wait'); c.classList.toggle('heads', !!data.cast.tosses[i][k]); });
+    cs.forEach((c, k) => c.classList.toggle('heads', !!data.cast.tosses[i][k]));
+    await sleep(reduced ? 0 : 350);
+    if (run !== state.run) return;
+    btn.classList.remove('throwing');
+    cs.forEach((c) => c.classList.remove('spin'));
+    ritualSound('coin');
     rows[i].className = `ln ${data.cast.lines[i] ? 'yang' : 'yin'} land`;
-    btn.disabled = false;
+    btn.disabled = i === 5;
   }
   btn.disabled = true;
   $('#instr').innerHTML = `<b>${t('hexName')(data.cast)}</b>${t('coinDone')}`;
-  shoot(); await sleep(reduced ? 300 : 1400);
+  await gatherCoins(run, btn);
   if (run === state.run) finish(data, mode);
 }
 // Quick Liu Yao: a live clock; the second the user taps is the cast
 async function dial(run, mode) {
   $('#stage').innerHTML = `<button class="dial" id="dial" aria-label="Catch this second">
+      <img class="dial-underlay" src="/ritual/silver-lace-tray.webp" width="720" height="900" alt="" aria-hidden="true">
       <span class="ring" aria-hidden="true">${[...BRANCHES].map((b, k) => `<b style="--a:${k * 30}deg">${b}</b>`).join('')}</span>
-      <i class="hand h"></i><i class="hand s"></i><span class="clock" id="clock"></span></button>
-    <div class="hex" id="d-hex" hidden></div>`;
+      <i class="hand h"></i><i class="hand s"></i><span class="clock" id="clock"></span>
+      <span class="hex" id="d-hex" hidden></span></button>`;
   $('#instr').innerHTML = t('dial0');
   const el = $('#dial'), branches = el.querySelectorAll('.ring b');
   const tick = (t = new Date()) => {
@@ -686,14 +890,20 @@ async function dial(run, mode) {
     el.querySelector('.s').style.setProperty('--r', `${s * 6}deg`);
     branches.forEach((b, k) => b.classList.toggle('now', k === Math.floor((h + 1) / 2) % 12));
   };
-  tick(); const iv = setInterval(tick, 200);
+  tick();
+  const iv = setInterval(() => {
+    if (run !== state.run) { clearInterval(iv); return; }
+    tick();
+  }, 200);
   await once(el);
+  if (run !== state.run) { clearInterval(iv); return; }
   const at = Date.now(); clearInterval(iv); tick(new Date(at));
   el.classList.add('caught'); el.disabled = true; shoot();
   $('#instr').innerHTML = `<b>${$('#clock').textContent}</b>${t('dialWait')}`;
   const data = await ask(mode, { at });
   if (run !== state.run) return;
   const c = data.cast, hx = $('#d-hex');
+  el.classList.add('revealing');
   hx.hidden = false; hx.innerHTML = '<div class="ln slot"><i></i><i></i></div>'.repeat(6);
   $('#instr').innerHTML = `<b>${esc(c.time)}</b>`;
   for (let i = 0; i < 6; i++) { hx.children[i].className = `ln ${c.lines[i] ? 'yang' : 'yin'} land${i === c.moving - 1 ? ' moving' : ''}`; await sleep(reduced ? 0 : 160); }
@@ -701,13 +911,36 @@ async function dial(run, mode) {
   await sleep(reduced ? 300 : 1800);
   if (run === state.run) finish(data, mode);
 }
-// tarot: the deck fans out, the user picks, the cards turn over one by one
-const cardHTML = (c, label = '') => { const [a, b] = t('cardName')(c); return `<div class="tc${c.reversed ? ' rev' : ''}"><small>${esc(label)}</small><div class="face"><b>${esc(c.glyph)}</b><span>${esc(a)}</span><span class="zh">${esc(b)}</span></div><em>${c.reversed ? t('rev') : ''}</em></div>`; };
+// Tarot: choose the cards, light the candle, then reveal the same draw.
+const cardFaceHTML = (c) => { const [a, b] = t('cardName')(c); return `<b>${esc(c.glyph)}</b><span>${esc(a)}</span><span class="zh">${esc(b)}</span>${cardArt(c)}`; };
+const cardHTML = (c, label = '') => { const title = t('cardName')(c).filter(Boolean).join(' · '); return `<div class="tc${c.reversed ? ' rev' : ''}"><small>${esc(label)}</small><button type="button" class="face card-zoom" disabled data-card-title="${esc(title)}" data-reversed="${!!c.reversed}" aria-label="${esc(t('zoomCard') + ' ' + title)}">${cardFaceHTML(c)}</button><em>${c.reversed ? t('rev') : ''}</em></div>`; };
+async function carryCard(run, card, slot, origin) {
+  if (reduced) { slot.classList.replace('empty', 'selected'); return; }
+  const from = origin.box, to = slot.querySelector('.tarot-back').getBoundingClientRect();
+  const { width, height, angle } = origin;
+  const ghost = document.createElement('div');
+  ghost.className = 'tarot-flight cardback'; ghost.setAttribute('aria-hidden', 'true');
+  ghost.style.width = width + 'px'; ghost.style.height = height + 'px';
+  document.body.append(ghost);
+  const pose = (x, y, angle, scale = 1) => `translate3d(${x - width / 2}px,${y - height / 2}px,0) rotate(${angle}) scale(${scale})`;
+  const scale = Math.min(to.width / width, to.height / height);
+  const animation = ritualAnimate(run, ghost, [
+    { transform: pose(from.x + from.width / 2, from.y + from.height / 2, angle) },
+    { transform: pose(to.x + to.width / 2, to.y + to.height / 2, '0deg', scale) },
+  ], { duration: 620, easing: 'cubic-bezier(.22,.61,.36,1)' });
+  await animation.finished.catch(() => {});
+  if (run === state.run) {
+    slot.classList.replace('empty', 'selected');
+    await sleep(80);
+  }
+  animation.cancel(); run.animations.delete(animation); ghost.remove();
+}
 async function fan(run, mode) {
   const pending = ask(mode); pending.catch(() => {});
+  const candleArt = imageAsset('/ritual/ribbon-candle.png');
   const labels = positions(mode), n = labels.length;
-  $('#stage').innerHTML = `<div class="slots" style="--n:${n}">${labels.map((l) => `<div class="tc empty"><small>${l}</small><div class="face"></div><em></em></div>`).join('')}</div>
-    <div class="fan" id="fan">${Array.from({ length: 15 }, (_, i) => `<button class="fc cardback" style="--i:${i - 7}" aria-label="Card ${i + 1}"></button>`).join('')}</div>`;
+  $('#stage').innerHTML = `<div class="slots" style="--n:${n}">${labels.map((l) => `<div class="tc empty"><small>${l}</small><div class="tarot-turner"><div class="face tarot-back"></div><div class="face tarot-front"></div></div><em></em></div>`).join('')}</div>
+    <div class="ritual-space"><div class="fan" id="fan">${Array.from({ length: 15 }, (_, i) => `<button class="fc cardback" style="--i:${i - 7}" aria-label="${lang === 'zh' ? '牌' : 'Card'} ${i + 1}"></button>`).join('')}</div></div>`;
   const slots = [...document.querySelectorAll('#stage .tc')], deck = $('#fan');
   for (let i = 0; i < n; i++) {
     $('#instr').textContent = i ? t('fanN')(n - i) : t('fan0')(n);
@@ -715,27 +948,72 @@ async function fan(run, mode) {
       const b = e.target.closest('.fc'); if (!b || b.disabled) return; deck.removeEventListener('click', h); r(b);
     }));
     if (run !== state.run) return;
+    const keyboard = card.matches(':focus-visible');
+    ritualSound('card');
+    const style = getComputedStyle(card);
+    const origin = { box: card.getBoundingClientRect(), width: parseFloat(style.width), height: parseFloat(style.height), angle: style.rotate === 'none' ? '0deg' : style.rotate };
+    deck.inert = true;
     card.classList.add('picked'); card.disabled = true;
-    slots[i].className = 'tc back';
+    await carryCard(run, card, slots[i], origin);
+    if (run !== state.run) return;
+    deck.inert = false;
+    if (keyboard && i < n - 1) deck.querySelector('.fc:not(:disabled)')?.focus({ preventScroll: true });
   }
   deck.querySelectorAll('.fc').forEach((b) => (b.disabled = true));
-  $('#instr').textContent = t('flipping');
+  await candleArt;
+  if (run !== state.run) return;
+  deck.parentElement.insertAdjacentHTML('beforeend', `<button class="candle" id="light-candle" disabled aria-label="${t('lightCandle')}"><span class="candle-aura" aria-hidden="true"></span><img src="/ritual/ribbon-candle.png" alt="" width="1024" height="1536"><span class="candle-flame" aria-hidden="true"><i></i></span></button>`);
+  deck.classList.add('deck-away');
+  $('#instr').textContent = t('candleInvite');
+  $('#instr').classList.add('candle-invite');
+  await sleep(reduced ? 0 : 420);
+  if (run !== state.run) return;
+  deck.remove();
+  const candle = $('#light-candle');
+  candle.disabled = false;
+  candle.focus({ preventScroll: true });
+  await once(candle);
+  if (run !== state.run) return;
+  candle.disabled = true;
+  const flameBox = candle.querySelector('.candle-flame').getBoundingClientRect();
+  $('.candlelight').style.setProperty('--candle-x', `${flameBox.x}px`);
+  $('.candlelight').style.setProperty('--candle-y', `${flameBox.y + flameBox.height / 2}px`);
+  candle.classList.add('lit');
+  ritualSound('candle');
+  $('#instr').classList.remove('candle-invite');
+  $('#instr').textContent = t('candleWait');
+  const lightSettles = sleep(reduced ? 100 : 900);
   const data = await pending;
   if (run !== state.run) return;
+  await Promise.all([lightSettles, ...data.cast.cards.map((card) => imageAsset(cardSrc(card)))]);
+  if (run !== state.run) return;
+  const turns = [];
   for (const [i, c] of data.cast.cards.entries()) {
-    slots[i].outerHTML = cardHTML(c, labels[i]).replace('class="tc', 'class="tc flip');
-    await sleep(reduced ? 0 : 420);
+    const slot = slots[i], turner = slot.querySelector('.tarot-turner');
+    slot.classList.toggle('rev', !!c.reversed);
+    slot.querySelector('.tarot-front').innerHTML = cardFaceHTML(c);
+    slot.querySelector('em').textContent = c.reversed ? t('rev') : '';
+    if (!reduced) turns.push({ slot, animation: ritualAnimate(run, turner, [
+      { transform: 'rotateY(0deg)' }, { transform: 'rotateY(180deg)' },
+    ], { duration: 820, delay: i * 240, easing: 'cubic-bezier(.4,0,.2,1)' }) });
+    else slot.classList.add('revealed');
   }
-  shoot();
+  await Promise.all(turns.map(async ({ slot, animation }) => {
+    await animation.finished.catch(() => {});
+    if (run !== state.run) return;
+    slot.classList.add('revealed');
+    animation.cancel(); run.animations.delete(animation);
+  }));
+  if (run !== state.run) return;
   $('#instr').innerHTML = data.cast.verdict ? `<b>${esc(t('verdict')(data.cast.verdict))}</b>` : '';
-  await sleep(reduced ? 300 : 1600);
+  await closeCandle(run, candle);
   if (run === state.run) finish(data, mode);
 }
 
 // ---- the keepsake ----
 let image = null, current = null;
 function finish(data, mode) {
-  const e = { ts: Date.now(), day: dayKey(), question: state.question, mode, cast: data.cast, reading: data.reading };
+  const e = { ts: Date.now(), day: dayKey(), question: state.question, mode, cast: data.cast, reading: data.reading, source: data.source };
   save('oracle.readings', [...load('oracle.readings', []), e].slice(-60));
   const fresh = recordToday();
   const reward = fresh && sky().lit === 7 ? completeConstellation() : '';
@@ -743,10 +1021,25 @@ function finish(data, mode) {
   $('#q').value = ''; $('#n').textContent = '0'; $('#next').disabled = true;
   maybeA2HS();
 }
+const readingDate = (e) => new Date(e.ts).toLocaleDateString(t('locale'), { month: 'long', day: 'numeric', year: 'numeric' }) + (e.source === 'local-card-meanings' ? ' · ' + t('localReading') : '');
+function readingSections(e) {
+  const paragraphs = String(e.reading.body || '').split(/\n\s*\n/).filter((text) => text.trim());
+  return paragraphs.map((body, i) => {
+    if (e.source === 'local-card-meanings' && e.mode.startsWith('tarot') && paragraphs.length === e.cast.cards.length) {
+      const match = body.match(/^(.+?) · (.+?)[（(]([^）)]+)[）)][：:]\s*([\s\S]*)$/);
+      const card = e.cast.cards[i];
+      if (match && [card.name, card.zh].includes(match[2].trim())) return { position: match[1], card: match[2].trim(), orientation: match[3], body: match[4] };
+    }
+    return { body };
+  });
+}
+function readingBodyHTML(e) {
+  return readingSections(e).map((section) => `<section class="reading-section">${section.position ? `<p class="reading-position">${esc(section.position)}</p><h4 class="reading-card">${esc(section.card)}<span>${esc(section.orientation)}</span></h4>` : ''}<p class="reading-prose">${esc(section.body)}</p></section>`).join('');
+}
 function show(e, fresh = false, reward = '', relabel = false) {
   current = e;
   const tarot = e.mode.startsWith('tarot'), c = e.cast, r = e.reading;
-  $('#r-date').textContent = new Date(e.ts).toLocaleDateString(t('locale'), { month: 'long', day: 'numeric', year: 'numeric' });
+  $('#r-date').textContent = readingDate(e);
   $('#r-q').textContent = `“${e.question}”`;
   $('#r-sign').innerHTML = tarot
     ? `<div class="slots" style="--n:${c.cards.length}">${c.cards.map((x, i) => cardHTML(x, positions(e.mode)[i])).join('')}</div>`
@@ -754,18 +1047,48 @@ function show(e, fresh = false, reward = '', relabel = false) {
   $('#r-name').innerHTML = tarot ? esc(t('verdict')(c.verdict)) : t('hexName')(c);
   $('#r-name').hidden = tarot && !c.verdict;
   $('#r-title').textContent = r.title;
-  $('#r-body').textContent = r.body; $('#r-body').hidden = !r.body;
+  $('#r-body').innerHTML = readingBodyHTML(e); $('#r-body').hidden = !r.body;
   $('#r-step p').textContent = r.step; $('#r-step').hidden = !r.step;
-  $('#r-how').textContent = t('howText')[e.mode](c);
+  $('#r-ribbon').hidden = !r.step;
+  $('#r-how').textContent = t('howText')[e.mode](c) + (e.source === 'local-card-meanings' ? '\n\n' + t('localNote') : '');
   image = renderImage(e).catch((err) => { console.error(err); return null; });
   if (relabel) return; // language swap on an open result: keep the ritual message and scroll position
+  $('.how').open = false;
   renderRitual($('#ritual-result'), fresh, reward);
   go('result');
 }
 function openDay(day) {
   const e = load('oracle.readings', []).filter((x) => x.day === day).at(-1);
-  if (e) { state.run = null; show(e); }
+  if (e) { leaveRitual(); show(e); }
 }
+const cardViewer = $('#card-viewer');
+let cardViewerOpener = null;
+function openCard(face) {
+  const art = face.querySelector('.tarot-art');
+  if (!art?.naturalWidth || cardViewer.open) return;
+  cardViewerOpener = face;
+  const title = face.dataset.cardTitle + (face.dataset.reversed === 'true' ? ' · ' + t('rev') : '');
+  $('#card-viewer-art').src = art.currentSrc || art.src;
+  $('#card-viewer-art').alt = title;
+  $('#card-viewer-art').classList.toggle('reversed', face.dataset.reversed === 'true');
+  $('#card-viewer-title').textContent = title;
+  const widthBeforeLock = document.documentElement.clientWidth;
+  document.documentElement.classList.add('viewing-card');
+  document.documentElement.style.setProperty('--viewer-scroll-gap', `${Math.max(0, document.documentElement.clientWidth - widthBeforeLock)}px`);
+  cardViewer.showModal(); $('#card-viewer-close').focus({ preventScroll: true });
+}
+async function closeCard() {
+  if (!cardViewer.open || cardViewer.classList.contains('closing')) return;
+  cardViewer.classList.add('closing');
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) await sleep(180);
+  cardViewer.close(); cardViewer.classList.remove('closing');
+  document.documentElement.classList.remove('viewing-card');
+  document.documentElement.style.removeProperty('--viewer-scroll-gap');
+  cardViewerOpener?.focus({ preventScroll: true }); cardViewerOpener = null;
+}
+document.addEventListener('click', (event) => { const face = event.target.closest('.card-zoom'); if (face) openCard(face); });
+cardViewer.addEventListener('click', closeCard);
+cardViewer.addEventListener('cancel', (event) => { event.preventDefault(); closeCard(); });
 $('#save').addEventListener('click', async () => {
   const blob = await image; if (!blob) return;
   const file = new File([blob], 'oracle-reading.png', { type: 'image/png' });
@@ -776,15 +1099,21 @@ $('#save').addEventListener('click', async () => {
   a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 5000);
 });
 
-// Story-sized (1080x1920) image of the keepsake, drawn on a canvas so it looks the same on every phone.
-const SANS = 'Jost, "Noto Serif SC", sans-serif', SERIF = '"Instrument Serif", "Noto Serif SC", serif';
-const LACE = {};
-const laceImg = (n) => (LACE[n] ??= new Promise((r) => { const i = new Image(); i.onload = () => r(i); i.onerror = () => r(null); i.src = `/lace/${n}.webp`; }));
+// 1080px-wide keepsake; height follows all measured content without shrinking the body text.
+const SANS = '"Avenir Next", "PingFang SC", sans-serif', SERIF = 'OracleSerif, "Songti SC", serif';
+const IMAGE_ASSETS = {};
+const imageAsset = (path) => (IMAGE_ASSETS[path] ??= new Promise((resolve) => { const img = new Image(); img.onload = () => resolve(img); img.onerror = () => resolve(null); img.src = path; }));
 const SPARK_PATH = 'M10 0C11 7 13 9 20 10 13 11 11 13 10 20 9 13 7 11 0 10 7 9 9 7 10 0Z';
 // breaks between words, or between any two Chinese characters, but never before punctuation
 function wrap(x, text, w) {
+  if (String(text).includes('\n')) return String(text).split('\n').flatMap((line) => line ? wrap(x,line,w) : ['']);
   const out = []; let line = '';
-  for (const tok of String(text).match(/[\u2E80-\u9FFF\u3000-\u303F\uFF00-\uFFEF]|[^\s\u2E80-\u9FFF\u3000-\u303F\uFF00-\uFFEF]+|\s+/g) || []) {
+  const tokens = String(text).match(/[\u2E80-\u9FFF\u3000-\u303F\uFF00-\uFFEF]|[^\s\u2E80-\u9FFF\u3000-\u303F\uFF00-\uFFEF]+|\s+/g) || [];
+  const pieces = tokens.flatMap((token) => {
+    if (!token.trim() || x.measureText(token).width <= w) return [token];
+    return typeof Intl.Segmenter === 'function' ? [...new Intl.Segmenter(undefined, { granularity: 'grapheme' }).segment(token)].map((part) => part.segment) : Array.from(token);
+  });
+  for (const tok of pieces) {
     const next = line + tok;
     if (x.measureText(next.trim()).width > w && line.trim() && !/^[，。、；：？！」』）》,.;:!?]/.test(tok)) { out.push(line.trim()); line = tok.trimStart(); } else line = next;
   }
@@ -793,109 +1122,138 @@ function wrap(x, text, w) {
 }
 async function renderImage(e) {
   const tarot = e.mode.startsWith('tarot'), c = e.cast, r = e.reading;
-  const all = [e.question, r.title, r.body, r.step, c.zh, ...(c.cards || []).map((x) => x.zh), t('stepCaps'), t('revCaps'), ...t('positions'), tarot ? '' : t('hexPlain')(c), new Date(e.ts).toLocaleDateString(t('locale'), { month: 'long', day: 'numeric', year: 'numeric' })].join('');
-  await Promise.all([['italic 72px "Instrument Serif"'], ['400 72px "Instrument Serif"'], ['400 30px Jost'], ['500 20px Jost'],
-    ['400 60px "Noto Serif SC"', all], ['500 60px "Noto Serif SC"', all]].map(([f, s]) => document.fonts.load(f, s || '六').catch(() => {})));
+  const art = tarot ? await Promise.all(c.cards.map((card) => imageAsset(cardSrc(card)))) : [];
+  const [ascii, oval, lily, ornaments] = await Promise.all(['ascii-paper','dotted-oval','grain-lily','ornament-sheet'].map((name) => imageAsset('/materials/' + name + '.webp')));
+  const all = [e.question, r.title, r.body, r.step, c.zh, ...(c.cards || []).map((x) => x.zh), t('stepCaps'), t('revCaps'), ...t('positions'), tarot ? '' : t('hexPlain')(c), readingDate(e)].join('');
+  await Promise.all([['italic 72px OracleSerif'], ['400 72px OracleSerif'], ['400 72px OracleScript'], ['400 30px "Avenir Next"'], ['500 20px "Avenir Next"'],
+    ['400 60px "Songti SC"', all], ['500 60px "Songti SC"', all]].map(([f, s]) => document.fonts.load(f, s || '六').catch(() => {})));
   const it = lang === 'zh' ? '' : 'italic '; // no fake-italic Chinese
-  const W = 1080, H = 1920, cv = document.createElement('canvas'); cv.width = W; cv.height = H;
+  const W = 1080, cv = document.createElement('canvas'); cv.width = W;
   const x = cv.getContext('2d'), spark = new Path2D(SPARK_PATH);
-  const star = (cx, cy, s, col) => { x.save(); x.translate(cx - s, cy - s); x.scale(s / 10, s / 10); x.fillStyle = col; x.fill(spark); x.restore(); };
-  const g = x.createLinearGradient(0, 0, 0, H); g.addColorStop(0, '#1d2347'); g.addColorStop(.6, '#2d2f5e'); g.addColorStop(1, '#4a3f6b');
-  x.fillStyle = g; x.fillRect(0, 0, W, H);
-  let seed = 11; const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
-  for (let i = 0; i < 110; i++) {
-    const sx = rnd() * W, sy = rnd() * H;
-    if (rnd() < .2) star(sx, sy, 6 + rnd() * 12, '#f2d8a7');
-    else { x.globalAlpha = .4 + rnd() * .5; x.fillStyle = '#f6efe0'; x.beginPath(); x.arc(sx, sy, 1.5 + rnd() * 2, 0, 7); x.fill(); x.globalAlpha = 1; }
-  }
   const CW = 920, CX = (W - CW) / 2, P = 76, IW = CW - P * 2, mid = W / 2;
-  // measure, shrinking the body until the card fits
-  let blocks, total;
-  for (let bs = 34; ; bs -= 2) {
-    blocks = [];
-    const text = (font, color, str, lh, opts = {}) => { x.font = font; x.letterSpacing = opts.ls || '0px'; let lines = wrap(x, str, IW); if (opts.max) lines = lines.slice(0, opts.max); blocks.push({ k: 'text', font, color, lines, lh, ls: opts.ls, h: lines.length * lh }); };
-    const gap = (h) => blocks.push({ k: 'gap', h });
-    text(`500 22px ${SANS}`, '#6f6888', new Date(e.ts).toLocaleDateString(t('locale'), { month: 'long', day: 'numeric', year: 'numeric' }).toUpperCase(), 30, { ls: '6px' });
-    gap(20); text(`${it}40px ${SERIF}`, '#6f6888', `“${e.question}”`, 48, { max: 3 });
-    gap(26);
-    if (tarot) { const n = c.cards.length, cw = Math.min(176, (IW - (n - 1) * 22) / n); blocks.push({ k: 'cards', cw, ch: cw * 1.6, h: cw * 1.6 + (e.mode === 'tarot-guidance' ? 44 : 0) + 34 }); }
-    else blocks.push({ k: 'hex', h: 6 * 26 + 5 * 24 + 40 });
-    const name = tarot ? t('verdict')(c.verdict) : t('hexPlain')(c);
-    if (name) { gap(16); text(`400 32px ${SERIF}`, '#6f6888', name, 40, { ls: '4px' }); }
-    gap(30); text(`${it}${lang === 'zh' ? 66 : 80}px ${SERIF}`, '#2b2740', r.title, 86);
-    if (r.body) { gap(26); text(`400 ${bs}px ${SANS}`, '#2b2740', r.body, Math.round(bs * 1.5)); }
-    if (r.step) {
-      x.font = `400 30px ${SANS}`; x.letterSpacing = '0px';
-      const lines = wrap(x, r.step, IW - 64);
-      gap(34); blocks.push({ k: 'step', lines, h: 36 + 30 + 12 + lines.length * 44 + 32 });
-    }
-    total = blocks.reduce((s, b) => s + b.h, 0) + P * 2;
-    if (total <= 1480 || bs <= 24) break;
-  }
-  const top = Math.max(170, (H - total) / 2 + 10), bottom = top + total;
-  // lace card: polka-dot paper, inner border, lace corners, lace trim top and bottom, satin bow
-  const [tu, td, cn, bw] = await Promise.all(['trim-up', 'trim-down', 'corner', 'bow'].map(laceImg));
-  x.save(); x.shadowColor = 'rgba(8,8,30,.45)'; x.shadowBlur = 60; x.shadowOffsetY = 26; x.fillStyle = '#fbf6ec';
-  x.fillRect(CX, top, CW, total); x.restore();
-  x.fillStyle = 'rgba(168,130,47,.13)';
-  for (let dy = top + 40; dy < bottom - 30; dy += 34) for (let dx = CX + 40; dx < CX + CW - 30; dx += 34) { x.beginPath(); x.arc(dx, dy, 3.2, 0, 7); x.fill(); }
-  x.strokeStyle = '#d8c9a8'; x.lineWidth = 2; x.beginPath(); x.roundRect(CX + 22, top + 22, CW - 44, total - 44, 16); x.stroke();
-  if (cn) for (const [sx, sy] of [[1, 1], [-1, 1], [1, -1], [-1, -1]]) {
-    x.save(); x.globalAlpha = .6; x.translate(sx > 0 ? CX + 14 : CX + CW - 14, sy > 0 ? top + 14 : bottom - 14); x.scale(sx, sy); x.drawImage(cn, 0, 0, 130, 130 * cn.height / cn.width); x.restore();
-  }
-  const band = 58, tile = (im, y) => {
-    if (!im) return; const w = im.width * band / im.height;
-    x.save(); x.beginPath(); x.rect(CX, y, CW, band); x.clip(); for (let lx = CX; lx < CX + CW; lx += w) x.drawImage(im, lx, y, w, band); x.restore();
+  const blocks = [];
+  const text = (font, color, str, lh, opts = {}) => {
+    x.font = font; x.letterSpacing = opts.ls || '0px';
+    const lines = wrap(x, str, IW);
+    blocks.push({ k: 'text', font, color, lines, lh, ls: opts.ls, align: 'center', h: lines.length * lh });
   };
-  tile(tu, top - band); tile(td, bottom);
-  if (bw) x.drawImage(bw, mid - 100, top - band - 40, 200, 200 * bw.height / bw.width);
+  const gap = (h) => blocks.push({ k: 'gap', h });
+  text(`500 22px ${SANS}`, '#77716c', readingDate(e).toUpperCase(), 30, { ls: '4px' });
+  gap(24); text(`${it}40px ${SERIF}`, '#77716c', `“${e.question}”`, 52);
+  gap(30);
+  if (tarot) {
+    const n = c.cards.length, cw = Math.min(176, (IW - (n - 1) * 22) / n);
+    blocks.push({ k: 'cards', cw, ch: cw * 1.6, h: cw * 1.6 + (e.mode === 'tarot-guidance' ? 44 : 0) + 34 });
+  } else blocks.push({ k: 'hex', h: 6 * 26 + 5 * 24 + 40 });
+  const name = tarot ? t('verdict')(c.verdict) : t('hexPlain')(c);
+  if (name) { gap(20); text(`400 32px ${SERIF}`, '#77716c', name, 44); }
+  gap(36); text(`${it}${lang === 'zh' ? 66 : 80}px ${SERIF}`, '#605d59', r.title, 88);
+  for (const section of readingSections(e)) {
+    gap(38);
+    if (section.position) {
+      text(`500 24px ${SANS}`, '#81746b', section.position, 36, { ls: '2px' });
+      gap(10); text(`400 46px ${SERIF}`, '#605d59', section.card, 60);
+      text(`400 24px ${SANS}`, '#81746b', section.orientation, 36);
+      gap(16);
+    }
+    text(`400 42px ${SANS}`, '#605d59', section.body, 70);
+  }
+  if (r.step) {
+    if (ornaments) { gap(28); blocks.push({ k: 'ribbon', h: 100 }); }
+    x.font = `400 44px ${SERIF}`; x.letterSpacing = '0px';
+    const lines = wrap(x, r.step, IW - 64);
+    gap(30); blocks.push({ k: 'step', lines, h: 40 + 24 + lines.length * 64 + 36 });
+  }
+  const total = blocks.reduce((sum, block) => sum + block.h, 0) + P * 2;
+  const H = Math.ceil(Math.max(1920, total + 420)); cv.height = H;
+  const star = (cx, cy, s, col) => { x.save(); x.translate(cx - s, cy - s); x.scale(s / 10, s / 10); x.fillStyle = col; x.fill(spark); x.restore(); };
+  x.fillStyle = '#eeebe7'; x.fillRect(0, 0, W, H);
+  const paper = await imageAsset('/textures/rose-paper-clean.webp');
+  if (paper) {
+    const tileHeight = Math.round(W * paper.height / paper.width);
+    x.save(); x.globalAlpha = .8; x.filter = 'saturate(.68) contrast(1.1)';
+    for (let y = 0, i = 0; y < H; y += tileHeight, i++) {
+      x.save();
+      if (i % 2) { x.translate(0, y + tileHeight); x.scale(1, -1); x.drawImage(paper, 0, 0, W, tileHeight); }
+      else x.drawImage(paper, 0, y, W, tileHeight);
+      x.restore();
+    }
+    x.restore();
+  }
+  const material = (img, dx, dy, width, height, opacity) => {
+    if (!img) return;
+    const layer = document.createElement('canvas'); layer.width = width; layer.height = height;
+    const paint = layer.getContext('2d'); paint.drawImage(img, 0, 0, width, height);
+    paint.globalCompositeOperation = 'destination-in';
+    paint.translate(width / 2, height / 2); paint.scale(width / 2, height / 2);
+    const feather = paint.createRadialGradient(0, 0, .22, 0, 0, 1);
+    feather.addColorStop(0, '#000'); feather.addColorStop(.58, '#0008'); feather.addColorStop(1, '#0000');
+    paint.fillStyle = feather; paint.fillRect(-1, -1, 2, 2);
+    x.save(); x.globalCompositeOperation = 'multiply'; x.globalAlpha = opacity; x.filter = 'grayscale(1)';
+    x.drawImage(layer, dx, dy); x.restore();
+  };
+  material(ascii, 790, 70, 340, 527, .16);
+  material(oval, -180, Math.min(H * .3, 900), 420, 560, .2);
+  material(lily, 820, H - 780, 400, 711, .22);
+  for (const [sx, sy, size] of [[90,260,14],[970,460,11],[100,H*.58,10],[990,H-340,17],[860,H-120,9]]) star(sx, sy, size, '#fffdf5');
+  const top = Math.max(170, (H - total) / 2 - 10);
   x.textAlign = 'center'; x.textBaseline = 'middle';
   let y = top + P;
   for (const b of blocks) {
-    if (b.k === 'text') {
+    if (b.k === 'ribbon') {
+      x.save(); x.globalCompositeOperation = 'multiply'; x.globalAlpha = .6;
+      x.drawImage(ornaments, ornaments.width * 700/1280, ornaments.height * 1240/1707, ornaments.width * 530/1280, ornaments.height * 400/1707, mid - 66, y, 132, 92);
+      x.restore();
+    } else if (b.k === 'text') {
       x.font = b.font; x.fillStyle = b.color; x.letterSpacing = b.ls || '0px';
-      b.lines.forEach((l, i) => x.fillText(l, mid, y + b.lh * i + b.lh / 2));
+      x.textAlign = b.align;
+      b.lines.forEach((l, i) => x.fillText(l, b.align === 'left' ? CX + P : mid, y + b.lh * i + b.lh / 2));
+      x.textAlign = 'center';
       x.letterSpacing = '0px';
     } else if (b.k === 'hex') {
       const hw = 360, lh = 26, lg = 24, y0 = y + 20;
-      if (c.zh) { x.save(); x.globalAlpha = .09; x.fillStyle = '#a8822f'; x.font = `500 ${c.zh.length > 1 ? 190 : 270}px "Noto Serif SC"`; x.fillText(c.zh, mid, y + b.h / 2 + 10); x.restore(); }
+      if (c.zh) { x.save(); x.globalAlpha = .09; x.fillStyle = '#81716a'; x.font = `500 ${c.zh.length > 1 ? 190 : 270}px "Songti SC"`; x.fillText(c.zh, mid, y + b.h / 2 + 10); x.restore(); }
       c.lines.forEach((l, i) => {
         const ly = y0 + (5 - i) * (lh + lg), moving = e.mode === 'yesno' && i === c.moving - 1;
-        x.fillStyle = moving ? '#2b2740' : '#a8822f';
+        x.fillStyle = moving ? '#605d59' : '#81716a';
         if (l) x.fillRect(mid - hw / 2, ly, hw, lh);
         else { const half = (hw - 64) / 2; x.fillRect(mid - hw / 2, ly, half, lh); x.fillRect(mid + hw / 2 - half, ly, half, lh); }
-        if (moving) star(mid + hw / 2 + 40, ly + lh / 2, 14, '#2b2740');
+        if (moving) star(mid + hw / 2 + 40, ly + lh / 2, 14, '#605d59');
       });
     } else if (b.k === 'cards') {
       const cs = c.cards, span = cs.length * b.cw + (cs.length - 1) * 22, labels = e.mode === 'tarot-guidance';
       cs.forEach((card, i) => {
         const cx = mid - span / 2 + i * (b.cw + 22), cy = y + (labels ? 44 : 0);
-        if (labels) { x.font = `500 18px ${SANS}`; x.letterSpacing = '2px'; x.fillStyle = '#6f6888'; x.fillText(t('positions')[i].toUpperCase(), cx + b.cw / 2, y + 16); x.letterSpacing = '0px'; }
+        if (labels) { x.font = `500 18px ${SANS}`; x.letterSpacing = '2px'; x.fillStyle = '#77716c'; x.fillText(t('positions')[i].toUpperCase(), cx + b.cw / 2, y + 16); x.letterSpacing = '0px'; }
         x.save(); x.translate(cx + b.cw / 2, cy + b.ch / 2); if (card.reversed) x.rotate(Math.PI);
-        x.fillStyle = card.reversed ? '#f3ead6' : '#fff'; x.strokeStyle = '#d8c9a8'; x.lineWidth = 2;
-        x.beginPath(); x.roundRect(-b.cw / 2, -b.ch / 2, b.cw, b.ch, 14); x.fill(); x.stroke();
-        x.fillStyle = '#a8822f'; x.font = '400 56px "Instrument Serif"'; x.fillText(card.glyph, 0, -b.ch * .2);
+        if (art[i]) {
+          const scale = Math.min(b.cw / art[i].width, b.ch / art[i].height);
+          const aw = art[i].width * scale, ah = art[i].height * scale;
+          x.drawImage(art[i], -aw / 2, -ah / 2, aw, ah);
+        } else {
+        x.fillStyle = card.reversed ? '#e8dfd9' : '#fff'; x.strokeStyle = '#dcc5bd'; x.lineWidth = 2;
+        x.beginPath(); x.roundRect(-b.cw / 2, -b.ch / 2, b.cw, b.ch, 14); x.fill();
+        x.fillStyle = '#81716a'; x.font = '400 56px OracleSerif'; x.fillText(card.glyph, 0, -b.ch * .2);
         const [p1, p2] = t('cardName')(card);
-        x.fillStyle = '#2b2740'; x.font = `400 24px ${SERIF}`;
+        x.fillStyle = '#605d59'; x.font = `400 24px ${SERIF}`;
         wrap(x, p1, b.cw - 20).slice(0, 3).forEach((l, k) => x.fillText(l, 0, b.ch * .08 + k * 26));
-        x.fillStyle = '#6f6888'; x.font = `400 ${lang === 'zh' ? 15 : 20}px ${SERIF}`; x.fillText(p2, 0, b.ch * .38);
+        x.fillStyle = '#77716c'; x.font = `400 ${lang === 'zh' ? 15 : 20}px ${SERIF}`; x.fillText(p2, 0, b.ch * .38);
+        }
         x.restore();
-        if (card.reversed) { x.font = `500 16px ${SANS}`; x.letterSpacing = '2px'; x.fillStyle = '#a8822f'; x.fillText(t('revCaps'), cx + b.cw / 2, cy + b.ch + 20); x.letterSpacing = '0px'; }
+        if (card.reversed) { x.font = `500 16px ${SANS}`; x.letterSpacing = '2px'; x.fillStyle = '#81716a'; x.fillText(t('revCaps'), cx + b.cw / 2, cy + b.ch + 20); x.letterSpacing = '0px'; }
       });
     } else if (b.k === 'step') {
-      x.fillStyle = '#f3ead6'; x.beginPath(); x.roundRect(CX + P, y, IW, b.h, 26); x.fill();
-      x.strokeStyle = '#a8822f'; x.setLineDash([6, 6]); x.lineWidth = 2; x.stroke(); x.setLineDash([]);
-      x.font = `500 20px ${SANS}`; x.letterSpacing = '5px'; x.fillStyle = '#a8822f'; x.fillText(t('stepCaps'), mid + 14, y + 51);
-      const lw = x.measureText(t('stepCaps')).width; x.letterSpacing = '0px';
-      star(mid + 14 - lw / 2 - 22, y + 51, 10, '#a8822f');
-      x.font = `400 30px ${SANS}`; x.fillStyle = '#2b2740';
-      b.lines.forEach((l, i) => x.fillText(l, mid, y + 36 + 30 + 12 + i * 44 + 22));
+      x.textAlign = 'center';
+      x.font = `500 24px ${SANS}`; x.letterSpacing = '3px'; x.fillStyle = '#77716c';
+      x.fillText(t('stepCaps'), mid, y + 20); x.letterSpacing = '0px';
+      x.font = `400 44px ${SERIF}`; x.fillStyle = '#605d59';
+      b.lines.forEach((l, i) => x.fillText(l, mid, y + 40 + 24 + i * 64 + 32));
+      x.textAlign = 'center';
     }
     y += b.h;
   }
-  x.fillStyle = '#f6efe0';
-  if (top >= 250) { x.font = 'italic 64px "Instrument Serif"'; x.fillText('Oracle', mid, top - 150); }
-  x.globalAlpha = .7; x.font = '400 26px Jost'; x.letterSpacing = '3px'; x.fillText(location.host || 'oracle-divination.vercel.app', mid, Math.min(H - 50, bottom + 120));
+  x.fillStyle = '#77716c'; x.font = '400 72px OracleScript';
+  x.fillText('Oracle', mid, H - 100);
   return new Promise((res) => cv.toBlob(res, 'image/png'));
 }
 
@@ -910,6 +1268,27 @@ function voice(f, t, { attack, hold, release, peak, type = 'sine' }) {
   g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(peak, t + attack);
   g.gain.setValueAtTime(peak, t + attack + hold); g.gain.linearRampToValueAtTime(0, t + attack + hold + release);
   o.connect(g); g.connect(out); o.start(t); o.stop(t + attack + hold + release + .1);
+}
+function ritualSound(kind) {
+  if (!music.on || music.ctx?.state !== 'running' || document.hidden) return false;
+  const { ctx, out } = music, at = ctx.currentTime + .012;
+  if (kind === 'coin') {
+    voice(880, at, { attack: .002, hold: 0, release: .24, peak: .045 });
+    voice(1730, at + .025, { attack: .002, hold: 0, release: .16, peak: .012 });
+  } else {
+    if (!music.paperNoise) {
+      music.paperNoise = ctx.createBuffer(1, Math.ceil(ctx.sampleRate * .18), ctx.sampleRate);
+      const samples = music.paperNoise.getChannelData(0);
+      for (let i = 0; i < samples.length; i++) samples[i] = Math.random() * 2 - 1;
+    }
+    const source = ctx.createBufferSource(), filter = ctx.createBiquadFilter(), gain = ctx.createGain();
+    source.buffer = music.paperNoise; filter.type = 'bandpass'; filter.frequency.value = kind === 'card' ? 1400 : 800; filter.Q.value = .65;
+    gain.gain.setValueAtTime(0, at); gain.gain.linearRampToValueAtTime(kind === 'card' ? .045 : .03, at + .025); gain.gain.exponentialRampToValueAtTime(.0001, at + .17);
+    source.connect(filter); filter.connect(gain); gain.connect(out); source.start(at); source.stop(at + .18);
+    source.onended = () => { source.disconnect(); filter.disconnect(); gain.disconnect(); };
+    if (kind === 'candle') voice(hz(74), at, { attack: .012, hold: 0, release: .6, peak: .028 });
+  }
+  return true;
 }
 function musicLoop() {
   let i = 0;
@@ -966,6 +1345,9 @@ if (load('oracle.music', true)) {
   GESTURES.forEach((t) => addEventListener(t, unlock, true));
 }
 document.addEventListener('visibilitychange', () => { if (music.ctx && music.on) document.hidden ? music.ctx.suspend() : music.ctx.resume(); });
+document.addEventListener('visibilitychange', () => {
+  document.documentElement.classList.toggle('motion-paused', document.hidden);
+});
 
 // ---- add to home screen: the cheapest way back tomorrow ----
 let installEvt = null;
