@@ -522,7 +522,8 @@ body:not([data-screen=home]) main{padding-top:calc(var(--header-top) + 68px)}
 #s-start .today .ad{margin-inline:auto}
 #s-start>.foot{order:3;flex:none;align-self:center;width:220px;max-width:100%;margin:8px 0 0;padding:0}
 #s-start #ritual-start{order:4;flex:none;align-self:center;width:100%;padding:8px 0 0;margin:0;justify-content:center}
-#s-start .backs{order:5}
+/* Unlocked card backs own a full row in compact grids, never the today cell. */
+#s-start .backs{order:5;grid-area:auto;grid-column:1/-1;align-self:center;justify-self:center;max-width:100%;flex-wrap:wrap}
 @media(max-width:900px){#s-start.on{gap:12px;padding:12px 0}#s-start .altar .daycard{width:125px;height:196px}}
 @media(max-height:760px) and (min-width:901px){
  #s-start.on{gap:12px;padding:12px 0}

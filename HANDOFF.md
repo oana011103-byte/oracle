@@ -4,6 +4,8 @@
 
 ## 接手入口（2026-11-06）
 
+2026-11-12 补充修复：完成七日星座后显示的牌背选择器曾继承 `rose.css` 的 `grid-area:today`，在短屏手机/横屏的网格排版中与今日启示重叠。`public/reading.css` 的 `#s-start .backs` 已重置网格区域，改为独立跨列行并居中，保留解锁、隐藏、选择及本地记录逻辑。客户正式站请由接手者应用这一条 CSS 修复；不要用离线演示部署配置覆盖客户原 AI 服务。
+
 - 完整源码与后续提交： https://github.com/oana011103-byte/oracle （`main` 分支）。
 - 客户可直接查看的预览： https://oana011103-byte.github.io/oracle/ 。
 - 原客户仓库： https://github.com/CopywriterNull/oracle 。本次交付在 oana011103-byte 的仓库中，不会自动修改客户仓库或其 Vercel 正式站。
